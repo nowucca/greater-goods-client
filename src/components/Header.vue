@@ -15,23 +15,11 @@
     </div>
 
     <div id="midHeader">
-      <form id="searchForm" action="/category">
-        <input id="searchBar" type="text" />
-        <img
-          id="searchIcon"
-          src="@/assets/site/search-icon.png"
-          alt="Search Icon"
-        />
-      </form>
+      <HeaderSearchBar />
     </div>
 
     <div id="rightHeader">
-      <div id="cartButton">
-        <router-link :to="{ name: 'cart' }">
-          <img src="@/assets/site/cart-icon.png" alt="Cart Icon" />
-        </router-link>
-        <div id="cartCount">0</div>
-      </div>
+      <HeaderCart />
 
       <div id="avatarArea">
         <a href="#">
@@ -50,7 +38,14 @@
 </template>
 
 <script>
-export default {}
+import HeaderSearchBar from '@/components/HeaderSearchBar.vue'
+import HeaderCart from '@/components/HeaderCart.vue'
+export default {
+  components: {
+    HeaderSearchBar,
+    HeaderCart
+  }
+}
 </script>
 
 <style scoped>
@@ -80,50 +75,10 @@ header #logoText span {
   font-size: 24px;
 }
 
-header #searchForm {
-  display: flex;
-  align-items: center;
-}
-
-input#searchBar {
-  border: 3px solid #303216;
-  height: 45px;
-  color: #303216;
-  font-weight: lighter;
-  font-size: 18px;
-  min-width: 300px;
-}
-
-img#searchIcon {
-  height: 47px;
-  border: 3px solid #303216;
-  border-left: none;
-}
-
 header #rightHeader {
   width: 400px;
   display: flex;
   align-items: center;
-}
-
-#cartButton {
-  min-width: 200px;
-}
-#cartButton img {
-  width: 80px;
-}
-
-#cartButton {
-  position: relative;
-}
-
-#cartCount {
-  position: absolute;
-  top: 12px;
-  left: 38px;
-  font-weight: bold;
-  font-size: larger;
-  color: #fafafa;
 }
 
 #avatarArea {
