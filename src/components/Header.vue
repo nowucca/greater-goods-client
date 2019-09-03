@@ -17,9 +17,8 @@
     <div id="midHeader">
       <form id="searchForm" action="/category">
         <input id="searchBar" type="text" />
-        <input
+        <img
           id="searchIcon"
-          type="image"
           src="@/assets/site/search-icon.png"
           alt="Search Icon"
         />
@@ -95,7 +94,7 @@ input#searchBar {
   min-width: 300px;
 }
 
-input#searchIcon {
+img#searchIcon {
   height: 47px;
   border: 3px solid #303216;
   border-left: none;
