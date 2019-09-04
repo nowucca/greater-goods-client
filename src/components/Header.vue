@@ -89,36 +89,4 @@ header #rightHeader {
   font-size: 16px;
   color: #303216;
 }
-
-#headerNav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #5d9756;
-  display: flex;
-
-  top: 100px;
-  width: 100%;
-}
-
-li:last-child {
-  border-right: none;
-}
-#headerNav li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 12px 16px;
-  text-decoration: none;
-}
-
-#headerNav li a:hover {
-  background-color: #487643;
-}
-
-#headerNav .active {
-  background-color: #71b869;
-  border-bottom: 5px solid #4a90e2;
-}
 </style>

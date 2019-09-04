@@ -1,7 +1,8 @@
 <template>
   <div>
     <Header />
-    <NavBar />
+    <NavBar :category-name="categoryName" />
+    This is the category page for category: {{ categoryName }}
     <Footer />
   </div>
 </template>
@@ -15,7 +16,8 @@ export default {
     Header,
     NavBar,
     Footer
-  }
+  },
+  props: ['categoryName']
 }
 </script>
 

@@ -16,9 +16,10 @@ export default new Router({
       component: Home
     },
     {
-      path: '/category',
+      path: '/category/:categoryName',
       name: 'category',
-      component: Category
+      component: Category,
+      props: true
     },
     {
       path: '/cart',
