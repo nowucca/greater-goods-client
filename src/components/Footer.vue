@@ -99,9 +99,6 @@ footer {
   color: #303216;
 }
 
-#socialLinks {
-}
-
 #socialLinks ul {
   list-style-type: none;
   top: 100;

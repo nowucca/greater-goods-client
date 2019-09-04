@@ -8,6 +8,7 @@
           class="active"
         >
           <router-link
+            v-on:click.native="changeCategory(cat.name)"
             :to="{
               name: 'category',
               params: { categoryName: cat.name }
@@ -17,6 +18,7 @@
         </li>
         <li :key="cat.categoryId" v-else>
           <router-link
+            v-on:click.native="changeCategory(cat.name)"
             :to="{
               name: 'category',
               params: { categoryName: cat.name }
@@ -30,21 +32,24 @@
 </template>
 
 <script>
-import ApiClient from '@/services/ApiClient.js'
 export default {
   props: {
     categoryName: {
       type: String,
       default: 'dairy'
+    },
+    categories: {
+      type: Array,
+      default() {
+        return []
+      }
     }
   },
-  data: function() {
-    return {
-      categories: []
+  methods: {
+    changeCategory: function(newCategoryName) {
+      console.log('Emitting change category event')
+      this.$emit('change-category', newCategoryName)
     }
-  },
-  mounted: function() {
-    ApiClient.loadCategories().then(cats => (this.categories = cats))
   }
 }
 </script>

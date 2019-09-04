@@ -1,7 +1,12 @@
 <template>
   <div>
     <Header />
-    <NavBar />This is the home page
+    <NavBar
+      :categories="categories"
+      :category-name="categoryName"
+      v-on:change-category="$emit('change-category', $event)"
+    />
+    <p>This is the home page</p>
     <Footer />
   </div>
 </template>
@@ -15,7 +20,8 @@ export default {
     Header,
     NavBar,
     Footer
-  }
+  },
+  props: ['categories', 'categoryName']
 }
 </script>
 

@@ -6,10 +6,35 @@
         >Category</router-link
       >
     </div>
-    <router-view />
+    <router-view
+      :categories="categories"
+      :categoryName="categoryName"
+      v-on:change-category="changeCategory"
+    />
   </div>
 </template>
 
+<script>
+import ApiClient from '@/services/ApiClient.js'
+
+export default {
+  data: function() {
+    return {
+      categories: [],
+      categoryName: 'Dairy'
+    }
+  },
+  methods: {
+    changeCategory: function(name) {
+      console.log('App changing category name to ' + name)
+      this.categoryName = name
+    }
+  },
+  mounted: function() {
+    ApiClient.loadCategories().then(cats => (this.categories = cats))
+  }
+}
+</script>
 <style>
 @import 'css/normalize-and-reset.css';
 

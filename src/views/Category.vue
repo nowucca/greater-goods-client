@@ -1,8 +1,12 @@
 <template>
   <div>
     <Header />
-    <NavBar :category-name="categoryName" />
-    This is the category page for category: {{ categoryName }}
+    <NavBar
+      :categories="categories"
+      :category-name="categoryName"
+      v-on:change-category="$emit('change-category', $event)"
+    />
+    <p>This is the category page for category: {{ categoryName }}</p>
     <Footer />
   </div>
 </template>
@@ -17,7 +21,7 @@ export default {
     NavBar,
     Footer
   },
-  props: ['categoryName']
+  props: ['categories', 'categoryName']
 }
 </script>
 
