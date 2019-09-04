@@ -8,7 +8,7 @@
           class="active"
         >
           <router-link
-            v-on:click.native="changeCategory(cat.name)"
+            v-on:click.native="$emit('change-category', cat.name)"
             :to="{
               name: 'category',
               params: { categoryName: cat.name }
@@ -18,7 +18,7 @@
         </li>
         <li :key="cat.categoryId" v-else>
           <router-link
-            v-on:click.native="changeCategory(cat.name)"
+            v-on:click.native="$emit('change-category', cat.name)"
             :to="{
               name: 'category',
               params: { categoryName: cat.name }
@@ -43,12 +43,6 @@ export default {
       default() {
         return []
       }
-    }
-  },
-  methods: {
-    changeCategory: function(newCategoryName) {
-      console.log('Emitting change category event')
-      this.$emit('change-category', newCategoryName)
     }
   }
 }

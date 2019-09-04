@@ -2,14 +2,15 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link>|
-      <router-link :to="{ name: 'category', params: { categoryName: 'Dairy' } }"
+      <router-link
+        :to="{ name: 'category', params: { categoryName: categoryName } }"
         >Category</router-link
       >
     </div>
     <router-view
       :categories="categories"
       :categoryName="categoryName"
-      v-on:change-category="changeCategory"
+      v-on:change-category="categoryName = $event"
     />
   </div>
 </template>
@@ -22,12 +23,6 @@ export default {
     return {
       categories: [],
       categoryName: 'Dairy'
-    }
-  },
-  methods: {
-    changeCategory: function(name) {
-      console.log('App changing category name to ' + name)
-      this.categoryName = name
     }
   },
   mounted: function() {
