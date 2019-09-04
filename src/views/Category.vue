@@ -21,7 +21,12 @@ export default {
     NavBar,
     Footer
   },
-  props: ['categories', 'categoryName']
+  props: ['categories', 'categoryName'],
+  beforeRouteUpdate: function(to, from, next) {
+    console.log('category update')
+    this.$emit('category-change', to.params.name)
+    next()
+  }
 }
 </script>
 
