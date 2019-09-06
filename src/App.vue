@@ -31,7 +31,7 @@ export default {
 }
 </script>
 <style>
-@import 'css/normalize-and-reset.css';
+@import '~@/assets/css/normalize-and-reset.css';
 
 /* Hide pages until data is read */
 [v-cloak] {
