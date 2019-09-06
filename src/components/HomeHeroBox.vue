@@ -30,12 +30,13 @@ export default {
 
 <style scoped>
 .heroBox {
+  width: 300px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px;
-  height: 300px;
-  background-color: white;
+  background-color: #ebf2e2;
+
   border: 3px solid #9e9393;
   padding: 20px;
 }

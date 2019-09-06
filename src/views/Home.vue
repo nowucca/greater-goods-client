@@ -37,10 +37,15 @@
 
 <script>
 import HomeHeroBox from '@/components/HomeHeroBox.vue'
+import { store } from '@/store.js'
 
 export default {
   components: {
     HomeHeroBox
+  },
+  beforeRouteEnter(routeTo, routeFrom, next) {
+    store.deselectCategory()
+    next()
   }
 }
 </script>
@@ -51,16 +56,15 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   height: 700px;
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  background-image: linear-gradient(
+  /*linear-gradient(
       rgba(255, 255, 255, 0.9),
       rgba(255, 255, 255, 0.8)
-    ),
-    url('~@/assets/site/neonbrand-394691-unsplash.jpg');
+    ),*/
+  background-image: url('~@/assets/site/neonbrand-394691-unsplash.jpg');
   /* Position and center the image to scale nicely on all screens */
-  background-position: left -290px;
+  background-position: right -290px;
   background-repeat: repeat;
   background-size: cover;
 }
@@ -69,9 +73,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 3px solid #9e9393;
+  padding: 20px;
+  margin-top: 40px;
+  background-color: #ebf2e2;
 }
 .hero-text h1 {
-  margin-top: 40px;
   font-size: 60px;
   color: #303216;
 }

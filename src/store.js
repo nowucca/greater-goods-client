@@ -14,16 +14,35 @@ import ApiClient from '@/services/ApiClient.js'
 export const store = {
   state: {
     categories: [],
-    selectedCategoryName: 'Dairy'
+    selectedCategoryName: '',
+    selectedCategoryProducts: []
   },
+
   selectCategory(newCategory) {
     this.state.selectedCategoryName = newCategory
   },
+
+  deselectCategory() {
+    this.state.selectedCategoryName = ''
+  },
+
   loadCategories() {
     ApiClient.loadCategories()
       .then(cats => (this.state.categories = cats))
       .catch(reason => {
         console.log('Error loading categories ', reason)
+      })
+  },
+
+  loadProductsForSelectedCategory() {
+    var selectedCategoryName = this.state.selectedCategoryName
+    ApiClient.loadProductsForCategory(selectedCategoryName)
+      .then(products => (this.state.selectedCategoryProducts = products))
+      .catch(reason => {
+        console.log(
+          `Error loading products for ${selectedCategoryName}`,
+          reason
+        )
       })
   }
 }
