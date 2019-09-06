@@ -1,14 +1,14 @@
 <template>
   <nav id="headerNav">
     <ul>
-      <template v-for="cat in categories">
+      <template v-for="cat in storeState.categories">
         <li
           :key="cat.categoryId"
-          v-if="categoryName === cat.name"
+          v-if="storeState.selectedCategoryName === cat.name"
           class="active"
         >
           <router-link
-            v-on:click.native="$emit('change-category', cat.name)"
+            v-on:click.native="selectCategory(cat.name)"
             :to="{
               name: 'category',
               params: { categoryName: cat.name }
@@ -18,7 +18,7 @@
         </li>
         <li :key="cat.categoryId" v-else>
           <router-link
-            v-on:click.native="$emit('change-category', cat.name)"
+            v-on:click.native="selectCategory(cat.name)"
             :to="{
               name: 'category',
               params: { categoryName: cat.name }
@@ -32,17 +32,17 @@
 </template>
 
 <script>
+import { store } from '@/store.js'
+
 export default {
-  props: {
-    categoryName: {
-      type: String,
-      default: 'dairy'
-    },
-    categories: {
-      type: Array,
-      default() {
-        return []
-      }
+  data: function() {
+    return {
+      storeState: store.state
+    }
+  },
+  methods: {
+    selectCategory: function(categoryName) {
+      store.selectCategory(categoryName)
     }
   }
 }

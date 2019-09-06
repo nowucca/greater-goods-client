@@ -1,32 +1,32 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link
-        :to="{ name: 'category', params: { categoryName: categoryName } }"
-        >Category</router-link
-      >
-    </div>
-    <router-view
-      :categories="categories"
-      :categoryName="categoryName"
-      v-on:change-category="categoryName = $event"
-    />
+    <Header />
+    <NavBar />
+    <router-view :key="$route.fullPath" />
+    <Footer />
   </div>
 </template>
 
 <script>
-import ApiClient from '@/services/ApiClient.js'
+import Header from '@/components/Header.vue'
+import NavBar from '@/components/NavBar.vue'
+import Footer from '@/components/Footer.vue'
+import { store } from '@/store.js'
 
 export default {
-  data: function() {
+  components: {
+    Header,
+    NavBar,
+    Footer
+  },
+  data() {
     return {
-      categories: [],
-      categoryName: 'Dairy'
+      storeState: store.state
     }
   },
+
   mounted: function() {
-    ApiClient.loadCategories().then(cats => (this.categories = cats))
+    store.loadCategories()
   }
 }
 </script>
