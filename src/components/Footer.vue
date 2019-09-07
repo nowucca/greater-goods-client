@@ -22,17 +22,19 @@
       <ul class="navlist">
         <li>
           <a href="#">
-            <i class="fab fa-facebook-f"></i>
+            <font-awesome-icon
+              :icon="['fab', 'facebook-f']"
+            ></font-awesome-icon>
           </a>
         </li>
         <li>
           <a href="#">
-            <i class="fab fa-twitter"></i>
+            <font-awesome-icon :icon="['fab', 'twitter']"></font-awesome-icon>
           </a>
         </li>
         <li>
           <a href="#">
-            <i class="fab fa-instagram"></i>
+            <font-awesome-icon :icon="['fab', 'instagram']"></font-awesome-icon>
           </a>
         </li>
       </ul>
