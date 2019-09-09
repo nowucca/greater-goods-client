@@ -1,48 +1,54 @@
-// import Vue from 'vue'
-// import Vuex from 'vuex'
-
-// Vue.use(Vuex)
-
-// export default new Vuex.Store({
-//   state: {},
-//   mutations: {},
-//   actions: {}
-// })
-
+import Vue from 'vue'
+import Vuex from 'vuex'
 import ApiClient from '@/services/ApiClient.js'
 
-export const store = {
+Vue.use(Vuex)
+
+export default new Vuex.Store({
   state: {
     categories: [],
     selectedCategoryName: '',
     selectedCategoryProducts: []
   },
-
-  selectCategory(newCategory) {
-    this.state.selectedCategoryName = newCategory
+  mutations: {
+    ADD_CATEGORIES(categories) {
+      this.state.categories = categories
+    },
+    SELECT_CATEGORY(newCategory) {
+      this.state.selectedCategoryName = newCategory
+    },
+    DESELECT_CATEGORY() {
+      this.state.selectedCategoryName = ''
+    },
+    SELECT_CATEGORY_PRODUCTS(newProducts) {
+      this.state.selectedCategoryProducts = newProducts
+    }
   },
+  actions: {
+    loadCategories({ commit }) {
+      return ApiClient.loadCategories()
+        .then(cats => commit('ADD_CATEGORIES', cats))
+        .catch(reason => {
+          console.log('Error loading categories ', reason)
+        })
+    },
 
-  deselectCategory() {
-    this.state.selectedCategoryName = ''
-  },
-
-  loadCategories() {
-    ApiClient.loadCategories()
-      .then(cats => (this.state.categories = cats))
-      .catch(reason => {
-        console.log('Error loading categories ', reason)
-      })
-  },
-
-  loadProductsForSelectedCategory() {
-    var selectedCategoryName = this.state.selectedCategoryName
-    ApiClient.loadProductsForCategory(selectedCategoryName)
-      .then(products => (this.state.selectedCategoryProducts = products))
-      .catch(reason => {
-        console.log(
-          `Error loading products for ${selectedCategoryName}`,
-          reason
-        )
-      })
+    loadProductsForSelectedCategory({ commit }) {
+      var selectedCategoryName = this.state.selectedCategoryName
+      return ApiClient.loadProductsForCategory(selectedCategoryName)
+        .then(products => {
+          commit('SELECT_CATEGORY_PRODUCTS', products)
+        })
+        .catch(reason => {
+          console.log(
+            `Error loading products for ${selectedCategoryName}`,
+            reason
+          )
+        })
+    }
   }
+})
+
+export const store = {
+  state: {}
 }

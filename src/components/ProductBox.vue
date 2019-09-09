@@ -41,7 +41,7 @@ export default {
   methods: {
     productImageFileName: function(product) {
       let name = product.name.toLowerCase()
-      name = name.replace(/\ /g, '-')
+      name = name.replace(/ /g, '-')
       return `${name}.jpg`
     }
   }
