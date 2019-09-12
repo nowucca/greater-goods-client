@@ -10,12 +10,13 @@ export default new Vuex.Store({
     selectedCategoryName: '',
     selectedCategoryProducts: []
   },
+
   mutations: {
     ADD_CATEGORIES(categories) {
       this.state.categories = categories
     },
-    SELECT_CATEGORY(newCategory) {
-      this.state.selectedCategoryName = newCategory
+    SELECT_CATEGORY(categoryName) {
+      this.state.selectedCategoryName = categoryName
     },
     DESELECT_CATEGORY() {
       this.state.selectedCategoryName = ''
@@ -24,7 +25,16 @@ export default new Vuex.Store({
       this.state.selectedCategoryProducts = newProducts
     }
   },
+
   actions: {
+    selectCategory(categoryName) {
+      this.commit('SELECT_CATEGORY', categoryName)
+    },
+
+    deselectCategory() {
+      this.commit('DESELECT_CATEGORY')
+    },
+
     loadCategories({ commit }) {
       return ApiClient.loadCategories()
         .then(cats => commit('ADD_CATEGORIES', cats))
