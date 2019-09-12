@@ -37,14 +37,13 @@
 
 <script>
 import HomeHeroBox from '@/components/HomeHeroBox.vue'
-import { store } from '@/store.js'
 
 export default {
   components: {
     HomeHeroBox
   },
-  beforeRouteEnter(routeTo, routeFrom, next) {
-    store.deselectCategory()
+  beforeRouteUpdate(routeTo, routeFrom, next) {
+    this.$store.dispatch('deselectCategory')
     next()
   }
 }
