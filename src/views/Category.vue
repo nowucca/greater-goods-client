@@ -6,18 +6,19 @@
 
 <script>
 import CategoryProductList from '@/components/CategoryProductList.vue'
-import { store } from '@/store.js'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
     CategoryProductList
   },
   created: function() {
-    store.selectCategory(this.$route.params.categoryName)
+    this.selectCategory(this.$route.params.categoryName)
   },
   mounted: function() {
-    store.loadProductsForSelectedCategory()
-  }
+    this.loadProductsForSelectedCategory()
+  },
+  methods: mapActions(['selectCategory', 'loadProductsForSelectedCategory'])
 }
 </script>
 

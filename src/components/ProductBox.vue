@@ -21,7 +21,6 @@
 
 <script>
 import Price from '@/components/Price.vue'
-import { store } from '@/store.js'
 
 export default {
   props: {
@@ -32,11 +31,6 @@ export default {
   },
   components: {
     Price
-  },
-  data() {
-    return {
-      storeState: store.state
-    }
   },
   methods: {
     productImageFileName: function(product) {

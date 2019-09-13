@@ -1,7 +1,7 @@
 <template>
   <section class="products-container">
     <ProductBox
-      v-for="product in storeState.selectedCategoryProducts"
+      v-for="product in selectedCategoryProducts"
       v-bind:key="product.productId"
       :product="product"
     />
@@ -10,17 +10,13 @@
 
 <script>
 import ProductBox from '@/components/ProductBox.vue'
-import { store } from '@/store.js'
+import { mapState } from 'vuex'
 
 export default {
   components: {
     ProductBox
   },
-  data() {
-    return {
-      storeState: store.state
-    }
-  }
+  computed: mapState(['selectedCategoryProducts'])
 }
 </script>
 
