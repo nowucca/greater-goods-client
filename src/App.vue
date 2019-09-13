@@ -11,8 +11,8 @@
 import Header from '@/components/Header.vue'
 import NavBar from '@/components/NavBar.vue'
 import Footer from '@/components/Footer.vue'
-//import ApiClient from '@/services/ApiClient.js'
-import { mapActions, mapMutations } from 'vuex'
+
+import { mapActions } from 'vuex'
 
 export default {
   components: {
@@ -21,13 +21,11 @@ export default {
     Footer
   },
   methods: {
-    ...mapActions(['loadCategories']),
-    ...mapMutations(['ADD_CATEGORIES'])
+    ...mapActions(['loadCategories'])
   },
 
   mounted: function() {
-    this.$store.dispatch('loadCategories')
-    //ApiClient.loadCategories().then(cats => this.ADD_CATEGORIES(cats))
+    this.loadCategories()
   }
 }
 </script>
