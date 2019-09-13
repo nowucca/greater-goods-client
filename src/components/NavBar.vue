@@ -1,10 +1,10 @@
 <template>
   <nav id="headerNav">
     <ul>
-      <template v-for="cat in storeState.categories">
+      <template v-for="cat in categories">
         <li
           :key="cat.categoryId"
-          v-if="storeState.selectedCategoryName === cat.name"
+          v-if="selectedCategoryName === cat.name"
           class="active"
         >
           <router-link
@@ -32,18 +32,14 @@
 </template>
 
 <script>
-import { store } from '@/store.js'
+import { mapState, mapActions } from 'vuex'
 
 export default {
-  data: function() {
-    return {
-      storeState: store.state
-    }
+  computed: {
+    ...mapState(['categories', 'selectedCategoryName'])
   },
   methods: {
-    selectCategory: function(categoryName) {
-      store.selectCategory(categoryName)
-    }
+    ...mapActions(['selectCategory'])
   }
 }
 </script>

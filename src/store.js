@@ -12,27 +12,30 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    ADD_CATEGORIES(categories) {
-      this.state.categories = categories
+    ADD_CATEGORIES(state, categories) {
+      state.categories = []
+      for (let i = 0; i < categories.length; i++) {
+        state.categories.push(categories[i])
+      }
     },
-    SELECT_CATEGORY(categoryName) {
-      this.state.selectedCategoryName = categoryName
+    SELECT_CATEGORY(state, categoryName) {
+      state.selectedCategoryName = categoryName
     },
-    DESELECT_CATEGORY() {
-      this.state.selectedCategoryName = ''
+    DESELECT_CATEGORY(state) {
+      state.selectedCategoryName = ''
     },
-    SELECT_CATEGORY_PRODUCTS(newProducts) {
-      this.state.selectedCategoryProducts = newProducts
+    SELECT_CATEGORY_PRODUCTS(state, newProducts) {
+      state.selectedCategoryProducts = newProducts
     }
   },
 
   actions: {
-    selectCategory(categoryName) {
-      this.commit('SELECT_CATEGORY', categoryName)
+    selectCategory({ commit }, categoryName) {
+      commit('SELECT_CATEGORY', categoryName)
     },
 
-    deselectCategory() {
-      this.commit('DESELECT_CATEGORY')
+    deselectCategory({ commit }) {
+      commit('DESELECT_CATEGORY')
     },
 
     loadCategories({ commit }) {
