@@ -1,14 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import ApiClient from '@/services/ApiClient.js'
+import { ShoppingCart } from './models/ShoppingCart'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    surcharge: 500,
     categories: [],
     selectedCategoryName: '',
-    selectedCategoryProducts: []
+    selectedCategoryProducts: [],
+    cart: new ShoppingCart()
   },
 
   mutations: {
@@ -59,9 +62,10 @@ export default new Vuex.Store({
           )
         })
     }
+  },
+  getters: {
+    surcharge(state) {
+      return state.surcharge
+    }
   }
 })
-
-export const store = {
-  state: {}
-}
