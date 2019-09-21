@@ -1,0 +1,1 @@
+npm run build && cp -r dist/* ../greater-goods-server/src/main/webapp/
