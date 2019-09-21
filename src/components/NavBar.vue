@@ -8,7 +8,6 @@
           class="active"
         >
           <router-link
-            v-on:click.native="selectCategory(cat.name)"
             :to="{
               name: 'category',
               params: { categoryName: cat.name }
@@ -18,7 +17,6 @@
         </li>
         <li :key="cat.categoryId" v-else>
           <router-link
-            v-on:click.native="selectCategory(cat.name)"
             :to="{
               name: 'category',
               params: { categoryName: cat.name }
