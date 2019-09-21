@@ -21,14 +21,21 @@ export default new Vuex.Store({
         state.categories.push(categories[i])
       }
     },
+
     SELECT_CATEGORY(state, categoryName) {
       state.selectedCategoryName = categoryName
     },
+
     DESELECT_CATEGORY(state) {
       state.selectedCategoryName = ''
     },
+
     SELECT_CATEGORY_PRODUCTS(state, newProducts) {
       state.selectedCategoryProducts = newProducts
+    },
+
+    ADD_TO_CART(state, product, quantity = 1) {
+      state.cart.addItem(product, quantity)
     }
   },
 
@@ -61,6 +68,10 @@ export default new Vuex.Store({
             reason
           )
         })
+    },
+
+    addToCart({ commit }, product) {
+      commit('ADD_TO_CART', product)
     }
   },
   getters: {

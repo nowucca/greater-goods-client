@@ -7,7 +7,9 @@
 
     <div class="productDetails">
       <span class="productTitle">{{ product.name }}</span>
-      <button class="normalButton">Add to Cart</button>
+      <button class="normalButton" @click="addToCart(product)">
+        Add to Cart
+      </button>
     </div>
 
     <div class="productCost">
@@ -21,6 +23,7 @@
 
 <script>
 import Price from '@/components/Price.vue'
+import { mapActions } from 'vuex'
 
 export default {
   props: {
@@ -37,7 +40,8 @@ export default {
       let name = product.name.toLowerCase()
       name = name.replace(/ /g, '-')
       return `${name}.jpg`
-    }
+    },
+    ...mapActions(['addToCart'])
   }
 }
 </script>
