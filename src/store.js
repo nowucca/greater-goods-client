@@ -5,6 +5,8 @@ import { ShoppingCart } from './models/ShoppingCart'
 
 Vue.use(Vuex)
 
+export const CART_STORAGE_KEY = 'cart'
+
 export default new Vuex.Store({
   state: {
     surcharge: 500,
@@ -34,8 +36,18 @@ export default new Vuex.Store({
       state.selectedCategoryProducts = newProducts
     },
 
+    SET_CART(state, cartData) {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartData))
+      let newCart = new ShoppingCart()
+      cartData.items.forEach(item => {
+        newCart.addItem(item.product, item.quantity)
+      })
+      state.cart = newCart
+    },
+
     ADD_TO_CART(state, product, quantity = 1) {
       state.cart.addItem(product, quantity)
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(this.state.cart))
     }
   },
 
