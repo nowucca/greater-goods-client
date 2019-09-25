@@ -36,5 +36,6 @@ export default {
   font-weight: bold;
   font-size: larger;
   color: #fafafa;
+  cursor: pointer;
 }
 </style>
