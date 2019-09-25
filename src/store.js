@@ -48,6 +48,11 @@ export default new Vuex.Store({
     ADD_TO_CART(state, product, quantity = 1) {
       state.cart.addItem(product, quantity)
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(this.state.cart))
+    },
+
+    CLEAR_CART(state) {
+      localStorage.removeItem(CART_STORAGE_KEY)
+      state.cart.clear()
     }
   },
 
