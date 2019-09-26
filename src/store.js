@@ -50,6 +50,11 @@ export default new Vuex.Store({
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(this.state.cart))
     },
 
+    UPDATE_CART(state, { product, quantity }) {
+      state.cart.update(product, quantity)
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(this.state.cart))
+    },
+
     CLEAR_CART(state) {
       localStorage.removeItem(CART_STORAGE_KEY)
       state.cart.clear()
@@ -89,11 +94,21 @@ export default new Vuex.Store({
 
     addToCart({ commit }, product) {
       commit('ADD_TO_CART', product)
+    },
+    updateCart({ commit }, updateDetails) {
+      commit('UPDATE_CART', updateDetails)
+    },
+    clearCart({ commit }) {
+      commit('CLEAR_CART')
     }
   },
   getters: {
     surcharge(state) {
       return state.surcharge
+    },
+
+    defaultCategoryName() {
+      return 'Fresh Produce'
     }
   }
 })

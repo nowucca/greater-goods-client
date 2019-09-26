@@ -46,7 +46,9 @@
               step="1"
               placeholder="Quantity desired"
               v-model.trim.number="item.quantity"
-              @change="updateCart(item.product, item.quantity)"
+              @change="
+                updateCart({ product: item.product, quantity: item.quantity })
+              "
             />
           </td>
           <td>
@@ -78,10 +80,17 @@
         Clear Cart
       </button>
 
-      <router-link to="{ name: 'category' }">
+      <router-link
+        :to="{
+          name: 'category',
+          params: {
+            categoryName: selectedCategoryName || defaultCategoryName
+          }
+        }"
+      >
         <button class="normal2xButton">Continue Shopping</button>
       </router-link>
-      <router-link to="{ name: 'checkout' }" v-if="!cart.empty">
+      <router-link :to="{ name: 'checkout' }" v-if="!cart.empty">
         <button class="emphasized2xButton">Proceed to Checkout</button>
       </router-link>
     </section>
@@ -89,7 +98,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import Price from '@/components/Price'
 
 export default {
@@ -97,7 +106,11 @@ export default {
     Price
   },
   computed: {
-    ...mapState(['cart'])
+    ...mapGetters(['defaultCategoryName']),
+    ...mapState(['cart', 'selectedCategoryName'])
+  },
+  methods: {
+    ...mapActions(['updateCart', 'clearCart'])
   }
 }
 </script>
