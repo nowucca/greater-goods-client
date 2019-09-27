@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <NavBar />
+    <NavBar :visible="$route.meta.hideNavbar !== true" />
     <router-view :key="$route.fullPath" />
     <Footer />
   </div>
