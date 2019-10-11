@@ -1,28 +1,24 @@
 /*
 
-An associative array of ShoppingCartItem, where the key is the product identifier.
+The representation of a cart is an array of ShoppingCartItem.
 
  */
 
 import { ShoppingCartItem } from './ShoppingCartItem.js'
 
-import store from '../store.js'
-
-import { toInt, denseArray } from '../services/Utils'
-
 class ShoppingCart {
   constructor() {
     this._items = [] /* Array of Shopping Cart Item */
-    this._numberOfItems = 0
-    this._total = 0
   }
 
   get numberOfItems() {
-    return this._numberOfItems
+    return this._items.reduce((count, item) => {
+      return count + item.quantity
+    }, 0)
   }
 
   get empty() {
-    return this._numberOfItems <= 0
+    return this._items.length <= 0
   }
 
   /**
@@ -33,14 +29,9 @@ class ShoppingCart {
    * @see ShoppingCartItem
    */
   get subtotal() {
-    let amount = 0
-
-    for (var scProductId in this._items) {
-      let scItem = this._items[scProductId]
-      amount += scItem.quantity * scItem.price
-    }
-
-    return amount
+    return this._items.reduce((amount, item) => {
+      return amount + item.product.price * item.quantity
+    }, 0)
   }
 
   /**
@@ -50,8 +41,7 @@ class ShoppingCart {
    * @return the cost of all items times their quantities plus surcharge
    */
   get total() {
-    this._total = this.subtotal + this.surcharge
-    return this._total
+    return this.subtotal + this.surcharge
   }
 
   /**
@@ -60,7 +50,7 @@ class ShoppingCart {
    * @returns {number}
    */
   get surcharge() {
-    return store.getters.surcharge
+    return 500
   }
 
   /**
@@ -70,7 +60,7 @@ class ShoppingCart {
    * @see ShoppingCartItem
    */
   get items() {
-    return denseArray(this._items)
+    return ShoppingCart.frozenArray(this._items)
   }
 
   /**
@@ -78,8 +68,6 @@ class ShoppingCart {
    */
   clear() {
     this._items = []
-    this._numberOfItems = 0
-    this._total = 0
   }
 
   /**
@@ -91,23 +79,16 @@ class ShoppingCart {
    * @see ShoppingCartItem
    */
   addItem(product /*: Product */, quantity = 1) {
-    let isNewItem = true
-
-    for (let scProductId in this._items) {
-      if (this._items.hasOwnProperty(scProductId)) {
-        if (toInt(scProductId) === product.productId) {
-          isNewItem = false
-          this._items[scProductId].increment()
-        }
-      }
+    let existingItem = this._items.find(
+      item => item.product.productId == product.productId
+    )
+    if (!existingItem) {
+      let newItem = new ShoppingCartItem(product)
+      newItem.quantity = quantity
+      this._items.push(newItem)
+    } else {
+      existingItem.quantity++
     }
-
-    if (isNewItem === true) {
-      let scItem = new ShoppingCartItem(product)
-      scItem.quantity = quantity
-      this._items[scItem.productId] = scItem
-    }
-    this.recalculateNumberOfItems()
   }
 
   /**
@@ -123,47 +104,31 @@ class ShoppingCart {
   update(product /*: Product*/, quantity) {
     if (quantity < 0 || quantity > 99) return
 
-    for (let scProductId in this._items) {
-      if (this._items.hasOwnProperty(scProductId)) {
-        let scItem = this._items[scProductId]
-
-        if (toInt(scProductId) === product.productId) {
-          if (quantity !== 0) {
-            // set item quantity to new value
-            scItem.quantity = quantity
-          } else {
-            // if quantity equals 0, save item and break
-            this._items.splice(product.productId, 1)
-          }
-        }
+    let existingItemIndex = this._items.findIndex(
+      item => item.product.productId == product.productId
+    )
+    if (existingItemIndex !== -1) {
+      if (quantity !== 0) {
+        this._items[existingItemIndex].quantity = quantity
+      } else {
+        // remove item if quantity == 0
+        this._items.splice(existingItemIndex, 1)
       }
     }
-    this.recalculateNumberOfItems()
-  }
-
-  /**
-   * Returns the sum of quantities for all items maintained in shopping cart
-   * <code>items</code> list.
-   *
-   * @return the number of items in shopping cart
-   * @see ShoppingCartItem
-   */
-  recalculateNumberOfItems() {
-    let numberOfItems = 0
-
-    for (let scProductId in this._items) {
-      let scItem = this._items[scProductId]
-      numberOfItems += scItem.quantity
-    }
-    this._numberOfItems = numberOfItems
   }
 
   toJSON() {
     return {
-      items: denseArray(this._items),
-      numberOfItems: this._numberOfItems,
-      total: this._total
+      items: ShoppingCart.frozenArray(this._items)
     }
+  }
+
+  static frozenArray(inArray) {
+    let tempArr = []
+    Object.keys(inArray).forEach(element => {
+      tempArr.push(inArray[element])
+    })
+    return Object.freeze(tempArr)
   }
 }
 

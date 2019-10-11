@@ -6,11 +6,11 @@ export function toInt(x) {
   return parsed
 }
 
-// Avoids serializing null values of an associative array
-export function denseArray(associativeArray) {
+// Avoids serializing null values of an array with holes
+export function frozenArray(inArray) {
   let tempArr = []
-  Object.keys(associativeArray).forEach(element => {
-    tempArr.push(associativeArray[element])
+  Object.keys(inArray).forEach(element => {
+    tempArr.push(inArray[element])
   })
   return Object.freeze(tempArr)
 }
