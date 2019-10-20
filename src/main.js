@@ -3,8 +3,13 @@ import './plugins/fontawesome'
 import App from './App.vue'
 import router from './router'
 import store, { CART_STORAGE_KEY } from './store'
+import Vuelidate from 'vuelidate'
+import TreeView from 'vue-json-tree-view'
 
 Vue.config.productionTip = false
+
+Vue.use(Vuelidate)
+Vue.use(TreeView)
 
 new Vue({
   router,
