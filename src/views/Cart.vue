@@ -84,7 +84,7 @@
         :to="{
           name: 'category',
           params: {
-            categoryName: selectedCategoryName || defaultCategoryName
+            categoryName: categoryName
           }
         }"
       >
@@ -106,8 +106,8 @@ export default {
     Price
   },
   computed: {
-    ...mapGetters(['defaultCategoryName']),
-    ...mapState(['cart', 'selectedCategoryName'])
+    ...mapGetters(['categoryName']),
+    ...mapState(['cart'])
   },
   methods: {
     ...mapActions(['updateCart', 'clearCart'])

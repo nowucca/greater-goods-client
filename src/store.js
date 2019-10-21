@@ -132,6 +132,9 @@ export default new Vuex.Store({
 
     defaultCategoryName() {
       return 'Fresh Produce'
+    },
+    categoryName(state, getters) {
+      return state.selectedCategoryName || getters.defaultCategoryName
     }
   }
 })

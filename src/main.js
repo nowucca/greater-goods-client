@@ -2,7 +2,7 @@ import Vue from 'vue'
 import './plugins/fontawesome'
 import App from './App.vue'
 import router from './router'
-import store, { CART_STORAGE_KEY } from './store'
+import store, { CART_STORAGE_KEY, ORDER_DETAIL_STORAGE_KEY } from './store'
 import Vuelidate from 'vuelidate'
 import TreeView from 'vue-json-tree-view'
 
@@ -20,6 +20,11 @@ new Vue({
     if (cartString) {
       const cartData = JSON.parse(cartString)
       this.$store.commit('SET_CART', cartData)
+    }
+    const orderDetailString = sessionStorage.getItem(ORDER_DETAIL_STORAGE_KEY)
+    if (orderDetailString) {
+      const orderDetailData = JSON.parse(orderDetailString)
+      this.$store.commit('SET_ORDER_DETAIL', orderDetailData)
     }
   }
 }).$mount('#app')
