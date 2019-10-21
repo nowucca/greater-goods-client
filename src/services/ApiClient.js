@@ -1,6 +1,7 @@
 const url = (function() {
+  let port = window.location.protocol == 'https:' ? ':8443' : ':8080'
   return (
-    window.location.origin.replace(/:\d+$/gi, ':8080') +
+    window.location.origin.replace(/:\d+$/gi, port) +
     window.location.pathname.substring(
       0,
       window.location.pathname.indexOf('/', 2)
