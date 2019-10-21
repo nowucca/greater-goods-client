@@ -5,6 +5,7 @@ import Category from './views/Category.vue'
 import Cart from './views/Cart.vue'
 import Checkout from '@/views/Checkout.vue'
 import Confirmation from '@/views/Confirmation.vue'
+import NotFound from '@/views/NotFound.vue'
 
 Vue.use(Router)
 
@@ -39,6 +40,7 @@ export default new Router({
       name: 'confirmation',
       component: Confirmation,
       meta: { hideNavbar: true }
-    }
+    },
+    { path: '*', component: NotFound, meta: { hideNavbar: true } }
   ]
 })
