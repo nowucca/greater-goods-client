@@ -6,6 +6,7 @@ import { ShoppingCart } from './models/ShoppingCart'
 Vue.use(Vuex)
 
 export const CART_STORAGE_KEY = 'cart'
+export const ORDER_DETAIL_STORAGE_KEY = 'orderDetail'
 
 export default new Vuex.Store({
   state: {
@@ -13,7 +14,8 @@ export default new Vuex.Store({
     categories: [],
     selectedCategoryName: '',
     selectedCategoryProducts: [],
-    cart: new ShoppingCart()
+    cart: new ShoppingCart(),
+    orderDetail: null
   },
 
   mutations: {
@@ -58,6 +60,17 @@ export default new Vuex.Store({
     CLEAR_CART(state) {
       localStorage.removeItem(CART_STORAGE_KEY)
       state.cart.clear()
+    },
+    SET_ORDER_DETAIL(state, orderDetail) {
+      state.orderDetail = orderDetail
+      sessionStorage.setItem(
+        ORDER_DETAIL_STORAGE_KEY,
+        JSON.stringify(orderDetail)
+      )
+    },
+    CLEAR_ORDER_DETAIL(state) {
+      sessionStorage.removeItem(ORDER_DETAIL_STORAGE_KEY)
+      state.orderDetail = null
     }
   },
 
@@ -91,7 +104,17 @@ export default new Vuex.Store({
           )
         })
     },
+    placeOrder({ commit, state }, customerForm) {
+      commit('CLEAR_ORDER_DETAIL')
 
+      return ApiClient.placeOrder({
+        cart: state.cart,
+        customerForm: customerForm
+      }).then(orderDetail => {
+        commit('CLEAR_CART')
+        commit('SET_ORDER_DETAIL', orderDetail)
+      })
+    },
     addToCart({ commit }, product) {
       commit('ADD_TO_CART', product)
     },

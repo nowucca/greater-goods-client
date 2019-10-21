@@ -103,7 +103,11 @@
               />
             </div>
             <template v-if="$v.email.$error">
-              <div class="error" v-if="$v.email.$invalid">
+              <div class="error" v-if="!$v.email.maxLength">
+                Emails can have at most
+                {{ $v.email.$params.maxLength.max }} letters.
+              </div>
+              <div class="error" v-else-if="$v.email.$invalid">
                 Please enter a valid email address.
               </div>
             </template>
@@ -180,8 +184,11 @@
             <div class="formText formPendingText">Processing...</div>
           </template>
           <template v-if="checkoutStatus == 'OK'">
-            <div class="formText formOKText">
-              Checking out is not yet implemented.
+            <div class="formText formOKText">Order placed...</div>
+          </template>
+          <template v-if="checkoutStatus == 'SERVER_ERROR'">
+            <div class="formText formErrorText">
+              An unexpected error occurred, please try again.
             </div>
           </template>
         </div>
@@ -212,7 +219,7 @@ export default {
       phone: '408 555 1212',
       email: 's@s.ch',
       ccNumber: '4444333322221111',
-      checkoutStatus: '' /* OK, ERROR, PENDING */
+      checkoutStatus: '' /* OK, ERROR, PENDING, SERVER_ERROR */
     }
   },
   validations: {
@@ -257,9 +264,22 @@ export default {
         this.checkoutStatus = 'ERROR'
       } else {
         this.checkoutStatus = 'PENDING'
-        setTimeout(() => {
-          this.checkoutStatus = 'OK'
-        }, 500)
+        this.$store
+          .dispatch('placeOrder', {
+            name: this.name,
+            address: this.address,
+            phone: this.phone,
+            email: this.email,
+            ccNumber: this.ccNumber
+          })
+          .then(() => {
+            this.checkoutStatus = 'OK'
+            this.$router.push({ name: 'confirmation' })
+          })
+          .catch(reason => {
+            this.checkoutStatus = 'SERVER_ERROR'
+            console.log('Error placing order', reason)
+          })
       }
     }
   }

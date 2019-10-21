@@ -51,5 +51,20 @@ export default {
       .catch(reason => {
         console.log('Error fetching product data', reason)
       })
+  },
+  placeOrder(order) {
+    var options = {
+      method: 'POST', // or 'PUT'
+      body: JSON.stringify(order) // data can be `string` or {object}!
+    }
+    return fetch(`${url}/api/orders`, {
+      ...fetchDefaults,
+      ...options
+    }).then(stream => {
+      if (stream.ok) {
+        return stream.json()
+      }
+      throw new Error('Network response was not ok.')
+    })
   }
 }
