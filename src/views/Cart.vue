@@ -41,11 +41,11 @@
           <td>
             <input
               type="number"
-              min="1"
+              min="0"
               max="9"
               step="1"
               placeholder="Quantity desired"
-              v-model.trim.number="item.quantity"
+              v-model.trim.number.lazy="item.quantity"
               @change="
                 updateCart({ product: item.product, quantity: item.quantity })
               "
