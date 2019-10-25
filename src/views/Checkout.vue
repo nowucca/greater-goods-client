@@ -29,6 +29,7 @@
                 maxlength="45"
                 id="name"
                 name="name"
+                @blur="$v.name.$touch()"
                 v-model.lazy="$v.name.$model"
               />
             </div>
@@ -55,6 +56,7 @@
                 maxlength="45"
                 id="address"
                 name="address"
+                @blur="$v.address.$touch()"
                 v-model.lazy="$v.address.$model"
               />
             </div>
@@ -81,6 +83,7 @@
                 maxlength="45"
                 id="phone"
                 name="phone"
+                @blur="$v.phone.$touch()"
                 v-model.lazy="$v.phone.$model"
               />
             </div>
@@ -99,6 +102,7 @@
                 maxlength="45"
                 id="email"
                 name="email"
+                @blur="$v.email.$touch()"
                 v-model.lazy="$v.email.$model"
               />
             </div>
@@ -121,6 +125,7 @@
                 maxlength="45"
                 id="ccNumber"
                 name="ccNumber"
+                @blur="$v.ccNumber.$touch()"
                 v-model="$v.ccNumber.$model"
               />
             </div>
@@ -214,10 +219,10 @@ export default {
   },
   data() {
     return {
-      name: 'Steve',
-      address: '123 Main St',
-      phone: '408 555 1212',
-      email: 's@s.ch',
+      name: '',
+      address: '',
+      phone: '',
+      email: '',
       ccNumber: '4444333322221111',
       checkoutStatus: '' /* OK, ERROR, PENDING, SERVER_ERROR */
     }
@@ -235,15 +240,15 @@ export default {
     },
     phone: {
       required,
-      phone
+      phone: phone
     },
     email: {
       required,
-      email
+      email: email
     },
     ccNumber: {
       required,
-      creditCard
+      creditCard: creditCard
     }
   },
   computed: {
@@ -378,8 +383,7 @@ export default {
 }
 
 .formTextHolder {
-  margin-bottom: 30px;
-  margin-top: 30px;
+  margin: 30px;
   border: 1px solid black;
   padding: 5px;
 }
