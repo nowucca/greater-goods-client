@@ -11,9 +11,7 @@
             Your shopping cart contains
             {{ cart.numberOfItems }} item.
           </template>
-          <template v-else
-            >Your shopping cart is empty.</template
-          >
+          <template v-else>Your shopping cart is empty.</template>
         </li>
       </ul>
     </div>
