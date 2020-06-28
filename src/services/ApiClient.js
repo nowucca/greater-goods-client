@@ -1,6 +1,7 @@
 const url = (function() {
+  let port = window.location.protocol == 'https:' ? ':8443' : ':8080'
   return (
-    window.location.origin.replace(/:\d+$/gi, ':8080') +
+    window.location.origin.replace(/:\d+$/gi, port) +
     window.location.pathname.substring(
       0,
       window.location.pathname.indexOf('/', 2)
@@ -51,5 +52,20 @@ export default {
       .catch(reason => {
         console.log('Error fetching product data', reason)
       })
+  },
+  placeOrder(order) {
+    var options = {
+      method: 'POST', // or 'PUT'
+      body: JSON.stringify(order) // data can be `string` or {object}!
+    }
+    return fetch(`${url}/api/orders`, {
+      ...fetchDefaults,
+      ...options
+    }).then(stream => {
+      if (stream.ok) {
+        return stream.json()
+      }
+      throw new Error('Network response was not ok.')
+    })
   }
 }

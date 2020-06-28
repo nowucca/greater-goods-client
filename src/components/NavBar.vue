@@ -1,5 +1,5 @@
 <template>
-  <nav id="headerNav">
+  <nav id="headerNav" v-if="visible">
     <ul>
       <template v-for="cat in categories">
         <li
@@ -33,6 +33,12 @@
 import { mapState, mapActions } from 'vuex'
 
 export default {
+  props: {
+    visible: {
+      type: Boolean,
+      default: true
+    }
+  },
   computed: {
     ...mapState(['categories', 'selectedCategoryName'])
   },
