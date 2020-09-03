@@ -1,7 +1,7 @@
 <template>
   <div id="cartButton">
     <router-link :to="{ name: 'cart' }">
-      <img src="@/assets/site/cart-icon.png" alt="Cart Icon" />
+      <img src="@/assets/images/site/cart-icon.png" alt="Cart Icon" />
       <div id="cartCount">{{ cart.numberOfItems }}</div>
     </router-link>
   </div>

@@ -3,7 +3,7 @@
     <input id="searchBar" type="text" />
     <img
       id="searchIcon"
-      src="@/assets/site/search-icon.png"
+      src="@/assets/images/site/search-icon.png"
       alt="Search Icon"
     />
   </form>

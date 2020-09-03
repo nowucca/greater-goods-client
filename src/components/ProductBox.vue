@@ -2,7 +2,7 @@
   <div class="product">
     <img
       class="productImage"
-      :src="require('@/assets/products/' + productImageFileName(product))"
+      :src="require('@/assets/images/products/' + productImageFileName(product))"
     />
 
     <div class="productDetails">

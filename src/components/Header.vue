@@ -3,7 +3,7 @@
     <div id="leftHeader">
       <div id="logo">
         <router-link :to="{ name: 'home' }">
-          <img src="@/assets/site/logo.png" alt="Greater Goods Grocers" />
+          <img src="@/assets/images/site/logo.png" alt="Greater Goods Grocers" />
         </router-link>
       </div>
 
@@ -23,7 +23,7 @@
 
       <div id="avatarArea">
         <a href="#">
-          <img src="@/assets/site/avatar.png" alt="Cart Icon" />
+          <img src="@/assets/images/site/avatar.png" alt="Cart Icon" />
         </a>
       </div>
 
