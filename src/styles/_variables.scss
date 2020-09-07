@@ -4,8 +4,26 @@ $link-secondary: purple;
 
 $ci-1: #71b869;
 $ci-2: #979797;
+$ci-3: #303216;
+
+$background-1: #ebf2e2;
+
+$border-1: #9e9393;
 
 $global-radius: 4px;
 
 $button2x-background: #d8d8d8;
-$button2x-color: #303216;
+$button2x-color: $ci-3;
+
+@mixin flex($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin align-items($value) {
+  align-items: $value;
+}
+
+@mixin justify-content($value) {
+  justify-content: $value;
+}
