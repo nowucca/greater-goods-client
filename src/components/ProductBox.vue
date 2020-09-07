@@ -1,13 +1,10 @@
 <template>
   <div class="product">
-    <img
-      class="productImage"
-      :src="require('@/assets/images/products/' + productImageFileName(product))"
-    />
+    <img class="productImage" :src="require('@/assets/images/products/' + productImageFileName(product))" />
 
     <div class="productDetails">
       <span class="productTitle">{{ product.name }}</span>
-      <button class="normalButton" @click="addToCart(product)">
+      <button @click="addToCart(product)">
         Add to Cart
       </button>
     </div>

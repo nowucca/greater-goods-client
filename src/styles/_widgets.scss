@@ -1,0 +1,76 @@
+/* Links */
+
+
+@mixin submit-input {
+  input[type='submit'] {
+    color: $link-primary;
+  }
+}
+
+a {
+  input[type='submit'] {
+    color: $link-primary;
+  }
+  &:visited {
+    input[type='submit'] {
+      color: $link-primary;
+    };
+  }
+}
+
+
+a {
+  &:hover { color: $link-secondary }
+  &:active { color: $link-secondary }
+}
+
+input[type='submit']:hover,
+ul.buttons a:hover {
+  color: $link-secondary;
+}
+
+
+/*
+Buttons
+ */
+
+button,
+a.button,
+.button {
+  border: 1px solid $ci-2;
+  font-weight: bold;
+  font-size: 13px;
+  color: $ci-1;
+  text-align: center;
+  width: 11.8em;
+  height: 2em;
+
+  &:hover {
+    background-color: $ci-1;
+    color: white;
+    font-weight: normal;
+  }
+}
+
+.normal2xButton {
+  @extend button;
+  font-size: 18px;
+  color: $button2x-color;
+  background: $button2x-background;
+  border-radius: $global-radius;
+  width: 18em;
+  height: 3em;
+  &:hover {
+    background: darken($button2x-background, 30%);
+  }
+}
+
+.emphasized2xButton {
+  @extend .normal2xButton;
+  color: white;
+  background: $ci-1;
+  border-radius: $global-radius;
+  &:hover {
+    background: darken($ci-1, 20%);
+  }
+}
