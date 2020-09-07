@@ -1,0 +1,22 @@
+@import '_variables.scss';
+@import '_widgets.scss';
+@import 'typography.scss';
+
+
+/* Hide pages until data is read */
+[v-cloak] {
+  display: none !important;
+}
+
+body {
+  font: 1em normal Verdana, Tahoma, sans-serif;
+  color: black;
+  font-size: 20px;
+}
+
+main {
+  /* stack header-section-footer on all pages */
+  display: flex;
+  flex-direction: column;
+}
+
