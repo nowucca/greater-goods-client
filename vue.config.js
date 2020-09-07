@@ -3,6 +3,7 @@ module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? '/GreaterGoodsGrocers' : '/GreaterGoodsGrocers',
 
   css: {
+    sourceMap: process.env.NODE_ENV === 'development',
     loaderOptions: {
       sass: {
         additionalData: `@import "@/styles/_variables.scss";`
