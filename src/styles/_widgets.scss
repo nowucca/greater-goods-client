@@ -69,7 +69,6 @@ a.button,
   @extend .normal2xButton;
   color: white;
   background: $ci-1;
-  border-radius: $global-radius;
   &:hover {
     background: darken($ci-1, 20%);
   }
