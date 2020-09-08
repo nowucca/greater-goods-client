@@ -1,5 +1,5 @@
 <template>
-  <div class="heroBox">
+  <div class="hero-box">
     <font-awesome-icon :icon="faIcon" size="2x"></font-awesome-icon>
     <h3>{{ title }}</h3>
     <span :id="id">{{ byline }}</span>
@@ -28,40 +28,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.heroBox {
-  width: 300px;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #ebf2e2;
-
-  border: 3px solid #9e9393;
-  padding: 20px;
-}
-
-.heroBox i {
-  width: 100px;
-  height: 40px;
-  font-size: 3rem;
-  text-align: center;
-  color: #303216;
-}
-
-.heroBox h3 {
-  margin-top: 30px;
-  font-size: 20px;
-  color: #303216;
-  font-weight: bold;
-}
-
-.heroBox span {
-  margin-top: 30px;
-  font-size: 20px;
-  width: 75%;
-  text-align: center;
-  color: #303216;
-  font-weight: lighter;
-}
+<style lang="scss">
+@import 'src/styles/components/HomeHeroBox';
 </style>
