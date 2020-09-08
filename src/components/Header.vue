@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header id="header">
     <div id="leftHeader">
       <div id="logo">
         <router-link :to="{ name: 'home' }">
@@ -49,44 +49,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-header {
-  background: $background-1;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-header #leftHeader {
-  width: 400px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-}
-
-header #logo img {
-  width: 60px;
-  margin-left: 40px;
-  margin-right: 10px;
-}
-
-header #logoText span {
-  color: #303216;
-  font-size: 24px;
-}
-
-header #rightHeader {
-  width: 400px;
-  display: flex;
-  align-items: center;
-}
-
-#avatarArea {
-  margin-right: 20px;
-}
-
-#accountArea {
-  font-size: 16px;
-  color: #303216;
-}
+@import 'src/styles/components/Header';
 </style>
