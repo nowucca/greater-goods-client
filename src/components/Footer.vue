@@ -22,9 +22,7 @@
       <ul class="navlist">
         <li>
           <a href="#">
-            <font-awesome-icon
-              :icon="['fab', 'facebook-f']"
-            ></font-awesome-icon>
+            <font-awesome-icon :icon="['fab', 'facebook-f']"></font-awesome-icon>
           </a>
         </li>
         <li>
@@ -50,9 +48,9 @@
 export default {}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 footer {
-  background: #ebf2e2;
+  background: $background-1;
   color: #303216;
   display: flex;
   flex-direction: column;
@@ -76,7 +74,6 @@ footer {
   padding: 0;
   overflow: hidden;
   display: flex;
-  top: 100;
   width: 100%;
 }
 
@@ -103,7 +100,6 @@ footer {
 
 #socialLinks ul {
   list-style-type: none;
-  top: 100;
   width: 50%;
   display: flex;
   flex-direction: row;
