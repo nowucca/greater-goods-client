@@ -48,9 +48,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 header {
-  background: #ebf2e2;
+  background: $background-1;
   color: white;
   display: flex;
   align-items: center;
