@@ -45,5 +45,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'src/styles/Home';
+@import '@/styles/views/Home';
 </style>
