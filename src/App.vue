@@ -31,6 +31,5 @@ export default {
 }
 </script>
 <style lang="scss">
-@import 'src/styles/normalize-and-reset.scss';
-@import 'src/styles/app';
+@import 'src/styles/App';
 </style>

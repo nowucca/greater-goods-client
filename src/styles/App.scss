@@ -1,5 +1,6 @@
-@import '_variables.scss';
-@import '_widgets.scss';
+@import 'src/styles/normalize-and-reset';
+@import 'src/styles/variables';
+@import 'src/styles/widgets';
 
 
 /* Hide pages until data is read */

@@ -1,5 +1,5 @@
 <template>
-  <div id="cart-button">
+  <div id="header-cart">
     <router-link :to="{ name: 'cart' }">
       <img src="@/assets/images/site/cart-icon.png" alt="Cart Icon" />
       <div id="cart-count">{{ cart.numberOfItems }}</div>
