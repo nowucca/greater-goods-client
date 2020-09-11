@@ -18,5 +18,22 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'src/styles/components/HeaderCart';
+#header-cart {
+  min-width: 12.5em;
+  position: relative;
+
+  img {
+    width: 80px;
+  }
+
+  #cart-count {
+    position: absolute;
+    top: 12px;
+    left: 38px;
+    font-weight: bold;
+    font-size: larger;
+    color: #fafafa;
+    cursor: pointer;
+  }
+}
 </style>

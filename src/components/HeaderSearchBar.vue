@@ -10,5 +10,23 @@ export default {}
 </script>
 
 <style lang="scss">
-@import 'src/styles/components/HeaderSearchBar';
+#header-search-bar {
+  display: flex;
+  align-items: center;
+
+  input#searchBar {
+    border: 3px solid #303216;
+    height: 2.6em;
+    color: $ci-3;
+    font-weight: lighter;
+    font-size: 18px;
+    min-width: 20em;
+  }
+
+  img#searchIcon {
+    height: 3em;
+    border: 3px solid $ci-3;
+    border-left: none;
+  }
+}
 </style>

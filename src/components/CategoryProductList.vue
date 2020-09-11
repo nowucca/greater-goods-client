@@ -17,5 +17,14 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'src/styles/components/CategoryProductList';
+.category-product-list {
+  display: flex;
+  flex-wrap: wrap;
+  color: $ci-3;
+  align-items: center;
+  width: 90%;
+  justify-content: space-evenly;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
 </style>

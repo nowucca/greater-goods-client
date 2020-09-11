@@ -45,5 +45,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'src/styles/components/NavBar';
+$navbar-background: #5d9756;
+.header-navbar {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: $navbar-background;
+    display: flex;
+
+    top: 100px;
+    width: 100%;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: darken($ci-1, 20%);
+    border-bottom: darken($ci-1, 20%);
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+
+  .active {
+    background-color: $ci-1;
+    border-bottom: 5px solid $ci-4;
+  }
+}
 </style>
