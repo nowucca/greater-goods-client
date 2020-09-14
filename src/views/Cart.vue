@@ -44,9 +44,7 @@
               step="1"
               placeholder="Quantity desired"
               v-model.trim.number.lazy="item.quantity"
-              @change="
-                updateCart({ product: item.product, quantity: item.quantity })
-              "
+              @change="updateCart({ product: item.product, quantity: item.quantity })"
             />
           </td>
           <td>
@@ -70,11 +68,7 @@
     </section>
 
     <section id="cartActions">
-      <button
-        class="normal2xButton"
-        v-if="!cart.empty"
-        @click.stop.prevent="clearCart"
-      >
+      <button class="normal2xButton" v-if="!cart.empty" @click.stop.prevent="clearCart">
         Clear Cart
       </button>
 
