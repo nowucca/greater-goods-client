@@ -34,15 +34,15 @@ export default {
   @include align-items(center);
   width: 300px;
   height: 300px;
-  background-color: $background-1;
+  background-color: var(--background-1);
 
-  border: 3px solid $border-1;
+  border: 3px solid var(--border-1);
   padding: 20px;
 
   h3 {
     margin-top: 2em;
     font-size: 20px;
-    color: $ci-3;
+    color: var(--ci-3);
     font-weight: bold;
   }
 
@@ -51,7 +51,7 @@ export default {
     height: 3em;
     font-size: 3rem;
     text-align: center;
-    color: $ci-3;
+    color: var(--ci-3);
   }
 
   span {
@@ -59,7 +59,7 @@ export default {
     font-size: 20px;
     width: 75%;
     text-align: center;
-    color: $ci-3;
+    color: var(--ci-3);
     font-weight: lighter;
   }
 }

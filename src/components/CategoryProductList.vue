@@ -20,7 +20,7 @@ export default {
 .category-product-list {
   display: flex;
   flex-wrap: wrap;
-  color: $ci-3;
+  color: var(--ci-3);
   align-items: center;
   width: 90%;
   justify-content: space-evenly;

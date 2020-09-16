@@ -17,7 +17,7 @@ export default {}
   input#searchBar {
     border: 3px solid #303216;
     height: 2.6em;
-    color: $ci-3;
+    color: var(--ci-3);
     font-weight: lighter;
     font-size: 18px;
     min-width: 20em;
@@ -25,7 +25,7 @@ export default {}
 
   img#searchIcon {
     height: 3em;
-    border: 3px solid $ci-3;
+    border: 3px solid var(--ci-3);
     border-left: none;
   }
 }

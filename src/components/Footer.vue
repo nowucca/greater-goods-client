@@ -50,7 +50,7 @@ export default {}
 
 <style lang="scss" scoped>
 .footer {
-  background: $background-1;
+  background: var(--background-1);
   color: #303216;
   display: flex;
   flex-direction: column;
@@ -81,7 +81,7 @@ export default {}
       text-decoration: none;
       padding-right: 1.5em;
       padding-left: 1.5em;
-      border-right: 1px solid $ci-3;
+      border-right: 1px solid var(--ci-3);
 
       &:first-child {
         padding-left: 0;
@@ -92,7 +92,7 @@ export default {}
       }
 
       a {
-        color: $ci-3;
+        color: var(--ci-3);
       }
     }
   }

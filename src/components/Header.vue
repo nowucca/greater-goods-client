@@ -51,7 +51,7 @@ export default {
 <style lang="scss">
 #header {
   font-size: 16px;
-  background: $background-1;
+  background: var(--background-1);
   color: white;
   display: flex;
   align-items: center;
@@ -70,7 +70,7 @@ export default {
     margin-right: 0.625em;
   }
   #logoText span {
-    color: $ci-3;
+    color: var(--ci-3);
     font-size: 24px;
   }
   #rightHeader {
@@ -84,7 +84,7 @@ export default {
 
   #accountArea {
     font-size: 16px;
-    color: $ci-3;
+    color: var(--ci-3);
   }
 }
 </style>

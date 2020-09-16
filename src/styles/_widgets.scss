@@ -1,32 +1,24 @@
 /* Links */
-
-
-submit-input {
-  input[type='submit'] {
-    color: $link-primary;
-  }
-}
-
 a {
   input[type='submit'] {
-    color: $link-primary;
+    color: var(--link-primary);
   }
   &:visited {
     input[type='submit'] {
-      color: $link-primary;
+      color: var(--link-primary);
     };
   }
 }
 
 
 a {
-  &:hover { color: $link-secondary }
-  &:active { color: $link-secondary }
+  &:hover { color: var(--link-secondary) }
+  &:active { color: var(--link-secondary) }
 }
 
 input[type='submit']:hover,
 ul.buttons a:hover {
-  color: $link-secondary;
+  color: var(--link-secondary);
 }
 
 
@@ -37,16 +29,16 @@ Buttons
 button,
 a.button,
 .button {
-  border: 1px solid $ci-2;
+  border: 1px solid var(--ci-2);
   font-weight: bold;
   font-size: 13px;
-  color: $ci-1;
+  color: var(--ci-1);
   text-align: center;
   width: 11.8em;
   height: 2em;
 
   &:hover {
-    background-color: $ci-1;
+    background-color: var(--ci-1);
     color: white;
     font-weight: normal;
   }
@@ -55,21 +47,21 @@ a.button,
 .normal2xButton {
   @extend button;
   font-size: 18px;
-  color: $button2x-color;
-  background: $button2x-background;
-  border-radius: $global-radius;
+  color: var(--button2x-color);
+  background: var(--button2x-background);
+  border-radius: var(--global-radius);
   width: 18em;
   height: 3em;
   &:hover {
-    background: darken($button2x-background, 30%);
+    background: var(--button2x-background-darker-2);
   }
 }
 
 .emphasized2xButton {
   @extend .normal2xButton;
   color: white;
-  background: $ci-1;
+  background: var(--ci-1);
   &:hover {
-    background: darken($ci-1, 20%);
+    background: var(--ci-1-darker-1);
   }
 }

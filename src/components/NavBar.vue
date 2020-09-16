@@ -8,8 +8,8 @@
               name: 'category',
               params: { categoryName: cat.name }
             }"
-            >{{ cat.name }}</router-link
-          >
+            >{{ cat.name }}
+          </router-link>
         </li>
         <li :key="cat.categoryId" v-else>
           <router-link
@@ -17,8 +17,8 @@
               name: 'category',
               params: { categoryName: cat.name }
             }"
-            >{{ cat.name }}</router-link
-          >
+            >{{ cat.name }}
+          </router-link>
         </li>
       </template>
     </ul>
@@ -45,14 +45,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$navbar-background: #5d9756;
+@import 'src/styles/variables';
+
 .header-navbar {
+  --navbar-background: #5d9756;
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: $navbar-background;
+    background-color: var(--navbar-background);
     display: flex;
 
     top: 100px;
@@ -68,8 +70,8 @@ $navbar-background: #5d9756;
   }
 
   li a:hover {
-    background-color: darken($ci-1, 20%);
-    border-bottom: darken($ci-1, 20%);
+    background-color: var(--ci-1-darker-1);
+    border-bottom: var(--ci-1-darker-1);
   }
 
   &:last-child {
@@ -77,8 +79,8 @@ $navbar-background: #5d9756;
   }
 
   .active {
-    background-color: $ci-1;
-    border-bottom: 5px solid $ci-4;
+    background-color: var(--ci-1);
+    border-bottom: 5px solid var(--ci-4);
   }
 }
 </style>

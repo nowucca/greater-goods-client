@@ -1,20 +1,19 @@
-$link-primary: blue;
-$link-secondary: purple;
-
-
-$ci-1: #71b869;
-$ci-2: #979797;
-$ci-3: #303216;
-$ci-4: #4a90e2;
-
-$background-1: #ebf2e2;
-
-$border-1: #9e9393;
-
-$global-radius: 4px;
-
-$button2x-background: #d8d8d8;
-$button2x-color: $ci-3;
+:root {
+  --link-primary: blue;
+  --link-secondary: purple;
+  --ci-1: hsl(113,35.7%,56.7%);
+  --ci-1-darker-1: hsl(113,35.7%,43%);
+  --ci-2: #979797;
+  --ci-3: #303216;
+  --ci-4: #4a90e2;
+  --background-1: #ebf2f2;
+  --border-1: #9e9393;
+  --global-radius: 4px;
+  --button2x-background: hsl(0,0%,84.7%);
+  --button2x-background-darker-1: hsl(0,0%,70%);
+  --button2x-background-darker-2: hsl(0,0%,50%);
+  --button2x-color: var(--ci-3);
+}
 
 @mixin flex($direction: row) {
   display: flex;

@@ -38,7 +38,7 @@ export default {
     HomeHeroBox
   },
   beforeRouteUpdate(routeTo, routeFrom, next) {
-    this.$store.dispatch('deselectCategory')
+    this.var(--store).dispatch('deselectCategory')
     next()
   }
 }
@@ -65,18 +65,18 @@ export default {
 .hero-text {
   @include flex(column);
   @include align-items(center);
-  border: 3px solid $border-1;
+  border: 3px solid var(--border-1);
   padding: 1.4em;
   margin-top: 2.8em;
-  background-color: $background-1;
+  background-color: var(--background-1);
   h1 {
     font-size: 60px;
-    color: $ci-3;
+    color: var(--ci-3);
   }
   h3 {
     margin-top: 1.4em;
     font-size: 20px;
-    color: $ci-3;
+    color: var(--ci-3);
   }
 }
 
