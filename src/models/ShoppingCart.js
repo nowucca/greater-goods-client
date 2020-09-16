@@ -79,9 +79,7 @@ class ShoppingCart {
    * @see ShoppingCartItem
    */
   addItem(product /*: Product */, quantity = 1) {
-    let existingItem = this._items.find(
-      item => item.product.productId == product.productId
-    )
+    let existingItem = this._items.find(item => item.product.productId === product.productId)
     if (!existingItem) {
       let newItem = new ShoppingCartItem(product)
       newItem.quantity = quantity
@@ -104,9 +102,7 @@ class ShoppingCart {
   update(product /*: Product*/, quantity) {
     if (quantity < 0 || quantity > 99) return
 
-    let existingItemIndex = this._items.findIndex(
-      item => item.product.productId == product.productId
-    )
+    let existingItemIndex = this._items.findIndex(item => item.product.productId === product.productId)
     if (existingItemIndex !== -1) {
       if (quantity !== 0) {
         this._items[existingItemIndex].quantity = quantity

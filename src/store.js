@@ -63,10 +63,7 @@ export default new Vuex.Store({
     },
     SET_ORDER_DETAIL(state, orderDetail) {
       state.orderDetail = orderDetail
-      sessionStorage.setItem(
-        ORDER_DETAIL_STORAGE_KEY,
-        JSON.stringify(orderDetail)
-      )
+      sessionStorage.setItem(ORDER_DETAIL_STORAGE_KEY, JSON.stringify(orderDetail))
     },
     CLEAR_ORDER_DETAIL(state) {
       sessionStorage.removeItem(ORDER_DETAIL_STORAGE_KEY)
@@ -98,10 +95,7 @@ export default new Vuex.Store({
           commit('SELECT_CATEGORY_PRODUCTS', products)
         })
         .catch(reason => {
-          console.log(
-            `Error loading products for ${selectedCategoryName}`,
-            reason
-          )
+          console.log(`Error loading products for ${selectedCategoryName}`, reason)
         })
     },
     placeOrder({ commit, state }, customerForm) {

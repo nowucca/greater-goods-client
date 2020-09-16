@@ -3,9 +3,7 @@
     <section id="checkoutEmpty" v-if="cart.empty">
       <p>Your cart is empty. Please add an item to your cart to checkout.</p>
 
-      <router-link
-        :to="{ name: 'category', params: { name: selectedCategoryName } }"
-      >
+      <router-link :to="{ name: 'category', params: { name: selectedCategoryName } }">
         <button class="normal2xButton">Continue Shopping</button>
       </router-link>
     </section>
@@ -14,12 +12,7 @@
 
       <div id="checkoutFormAndInfo">
         <div id="checkoutFormBox">
-          <form
-            id="checkoutForm"
-            v-on:submit.prevent="submitOrder"
-            v-on:reset="resetOrder"
-            method="post"
-          >
+          <form id="checkoutForm" v-on:submit.prevent="submitOrder" v-on:reset="resetOrder" method="post">
             <div class="form-element">
               <label for="name">Name</label>
               <input
@@ -34,9 +27,7 @@
               />
             </div>
             <template v-if="$v.name.$error">
-              <span class="error" v-if="!$v.name.required"
-                >Name is required</span
-              >
+              <span class="error" v-if="!$v.name.required">Name is required</span>
               <span class="error" v-if="!$v.name.minLength">
                 Name must have at least
                 {{ $v.name.$params.minLength.min }} letters.
@@ -141,21 +132,11 @@
             ></tree-view>-->
 
             <div id="checkoutButtonArea">
-              <button
-                id="checkoutButton"
-                class="emphasized2xButton"
-                @click.prevent="submitOrder"
-                type="submit"
-              >
+              <button id="checkoutButton" class="emphasized2xButton" @click.prevent="submitOrder" type="submit">
                 Complete Purchase
               </button>
 
-              <button
-                id="resetButton"
-                class="normal2xButton"
-                @click="resetOrder"
-                type="reset"
-              >
+              <button id="resetButton" class="normal2xButton" @click="resetOrder" type="reset">
                 Reset Form
               </button>
             </div>
@@ -178,20 +159,20 @@
             shipping)
           </span>
         </div>
-        <div v-if="checkoutStatus != ''" class="formTextHolder">
-          <template v-if="checkoutStatus == 'ERROR'">
+        <div v-if="checkoutStatus !== ''" class="formTextHolder">
+          <template v-if="checkoutStatus === 'ERROR'">
             <div class="formText formErrorText" v-if="$v.$invalid">
               Please fix the problems above and try again.
             </div>
           </template>
 
-          <template v-if="checkoutStatus == 'PENDING'">
+          <template v-if="checkoutStatus === 'PENDING'">
             <div class="formText formPendingText">Processing...</div>
           </template>
-          <template v-if="checkoutStatus == 'OK'">
+          <template v-if="checkoutStatus === 'OK'">
             <div class="formText formOKText">Order placed...</div>
           </template>
-          <template v-if="checkoutStatus == 'SERVER_ERROR'">
+          <template v-if="checkoutStatus === 'SERVER_ERROR'">
             <div class="formText formErrorText">
               An unexpected error occurred, please try again.
             </div>
@@ -253,7 +234,7 @@ export default {
   },
   computed: {
     ...mapState(['cart']),
-	...mapGetters(['categoryName'])
+    ...mapGetters(['categoryName'])
   },
   methods: {
     resetOrder() {
@@ -306,11 +287,6 @@ export default {
   margin-bottom: 30px;
 }
 
-#checkoutFormErrors {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
 #checkoutEmpty input,
 #checkoutEmpty select,
 #checkoutEmpty button,
@@ -321,16 +297,7 @@ export default {
   margin-right: 5px;
   line-height: 32px;
 }
-#checkoutFormErrors {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  font-size: 16px;
-  color: red;
-}
 
-.fieldErrorsBox,
 .error {
   display: flex;
   flex-direction: column;
@@ -348,6 +315,7 @@ export default {
   align-items: center;
   justify-content: space-around;
 }
+
 #checkoutFormBox {
 }
 
@@ -392,12 +360,15 @@ export default {
 .formText {
   text-align: center;
 }
+
 .formErrorText {
   color: red;
 }
+
 .formPendingText {
   color: orange;
 }
+
 .formOKText {
   color: blue;
 }

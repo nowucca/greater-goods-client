@@ -3,13 +3,7 @@ const portFrom = {
   'https:': ':8443'
 }
 
-const url =
-  location.protocol +
-  '//' +
-  location.hostname +
-  portFrom[location.protocol] +
-  process.env.BASE_URL +
-  'api'
+const url = location.protocol + '//' + location.hostname + portFrom[location.protocol] + process.env.BASE_URL + 'api'
 
 const fetchDefaults = {
   mode: 'cors',

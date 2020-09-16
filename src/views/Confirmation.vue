@@ -26,16 +26,11 @@
             <th>Quantity</th>
             <th>Price</th>
           </tr>
-          <tr
-            v-for="(item, index) in orderDetail.lineItems"
-            :key="orderDetail.order.orderId + '-' + item.productId"
-          >
+          <tr v-for="(item, index) in orderDetail.lineItems" :key="orderDetail.order.orderId + '-' + item.productId">
             <td>{{ orderDetail.products[index].name }}</td>
             <td>{{ item.quantity }}</td>
             <td>
-              <Price
-                :amount="orderDetail.products[index].price * item.quantity"
-              />
+              <Price :amount="orderDetail.products[index].price * item.quantity" />
             </td>
           </tr>
           <tr>
@@ -58,11 +53,7 @@
       </section>
       <section id="customerDetails">
         <h1>Customer Information</h1>
-        <p>
-          {{ orderDetail.customer.customerName }} ({{
-            orderDetail.customer.email
-          }})
-        </p>
+        <p>{{ orderDetail.customer.customerName }} ({{ orderDetail.customer.email }})</p>
         <p>{{ orderDetail.customer.address }}</p>
         <p>{{ orderDetail.customer.phone }}</p>
       </section>
@@ -83,6 +74,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import Price from '@/components/Price.vue'
+
 export default {
   components: {
     Price
@@ -103,6 +95,7 @@ export default {
 section p {
   margin-top: 5px;
 }
+
 #confirmationSummary {
   display: flex;
   flex-direction: column;
@@ -118,6 +111,7 @@ section p {
 #orderDetailsTable {
   text-align: center;
 }
+
 #customerDetails {
   text-align: center;
   display: block;
@@ -148,22 +142,11 @@ section p {
   text-align: center;
 }
 
-.continueShoppingButton {
-  background-color: #00882b;
-  color: white;
-  margin-top: 20px;
-  padding: 8px 16px;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  border: 2px #818181 solid;
-  cursor: pointer;
-}
-
 #orderDetailsTable {
   border: 2px solid black;
   background-color: #f1f1e1;
 }
+
 #orderDetailsTable th {
   font-weight: bold;
 }
@@ -177,6 +160,7 @@ section p {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
+
 #confirmationInvalid {
   margin-top: 100px;
   margin-bottom: 100px;
