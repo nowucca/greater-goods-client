@@ -2,7 +2,7 @@
   <nav class="header-navbar" v-if="visible">
     <ul>
       <template v-for="cat in categories">
-        <li :key="cat.categoryId" v-if="selectedCategoryName === cat.name" class="active">
+        <li :key="cat.categoryId" v-if="showActiveCategory(cat)" class="active">
           <router-link
             :to="{
               name: 'category',
@@ -39,6 +39,9 @@ export default {
     ...mapState(['categories', 'selectedCategoryName'])
   },
   methods: {
+    showActiveCategory: function(category) {
+      return this.$route.name !== 'home' && this.selectedCategoryName === category.name
+    },
     ...mapActions(['selectCategory'])
   }
 }
@@ -61,17 +64,20 @@ export default {
     width: 100%;
   }
 
+  li {
+    border-bottom: 5px solid var(--navbar-background);
+    &:hover {
+      background-color: var(--ci-1-darker-2);
+      border-bottom: 5px solid var(--ci-4-darker-1);
+    }
+  }
+
   li a {
     display: block;
     color: white;
     text-align: center;
     padding: 12px 16px;
     text-decoration: none;
-  }
-
-  li a:hover {
-    background-color: var(--ci-1-darker-1);
-    border-bottom: var(--ci-1-darker-1);
   }
 
   &:last-child {

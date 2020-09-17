@@ -3,9 +3,11 @@
   --link-secondary: purple;
   --ci-1: hsl(113,35.7%,56.7%);
   --ci-1-darker-1: hsl(113,35.7%,43%);
+  --ci-1-darker-2: hsl(113,35.7%,33%);
   --ci-2: #979797;
   --ci-3: #303216;
-  --ci-4: #4a90e2;
+  --ci-4: hsl(212,72%,58%);
+  --ci-4-darker-1: hsl(212,72%, calc(58 * .8%));
   --background-1: #ebf2f2;
   --border-1: #9e9393;
   --global-radius: 4px;
