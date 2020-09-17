@@ -203,7 +203,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import Price from '@/components/Price.vue'
 import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
 
@@ -252,7 +252,8 @@ export default {
     }
   },
   computed: {
-    ...mapState(['cart', 'selectedCategoryName'])
+    ...mapState(['cart']),
+	...mapGetters(['categoryName'])
   },
   methods: {
     resetOrder() {

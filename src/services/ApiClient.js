@@ -1,13 +1,15 @@
-const url = (function() {
-  let port = window.location.protocol == 'https:' ? ':8443' : ':8080'
-  return (
-    window.location.origin.replace(/:\d+$/gi, port) +
-    window.location.pathname.substring(
-      0,
-      window.location.pathname.indexOf('/', 2)
-    )
-  )
-})()
+const portFrom = {
+  'http:': ':8080',
+  'https:': ':8443'
+}
+
+const url =
+  location.protocol +
+  '//' +
+  location.hostname +
+  portFrom[location.protocol] +
+  process.env.BASE_URL +
+  'api'
 
 const fetchDefaults = {
   mode: 'cors',
@@ -23,7 +25,7 @@ const fetchDefaults = {
 export default {
   loadCategories(options = {}) {
     console.log('fetching ' + url + '/api/categories')
-    var fetchSettings = Object.assign({}, fetchDefaults, options)
+    let fetchSettings = Object.assign({}, fetchDefaults, options)
     return fetch(`${url}/api/categories`, fetchSettings)
       .then(stream => {
         if (stream.ok) {
@@ -37,7 +39,7 @@ export default {
   },
 
   loadProductsForCategory(categoryName = null, options = {}) {
-    var fetchSettings = Object.assign({}, fetchDefaults, options)
+    let fetchSettings = Object.assign({}, fetchDefaults, options)
 
     return fetch(
       `${url}/api/products/category?name=${categoryName}`,
@@ -54,7 +56,7 @@ export default {
       })
   },
   placeOrder(order) {
-    var options = {
+    let options = {
       method: 'POST', // or 'PUT'
       body: JSON.stringify(order) // data can be `string` or {object}!
     }
