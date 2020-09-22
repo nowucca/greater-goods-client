@@ -7,7 +7,7 @@
           params: { categoryName: this.categoryName }
         }"
       >
-        <button class="normal2xButton">Continue Shopping</button>
+        <button class="normal-2x-button">Continue Shopping</button>
       </router-link>
     </section>
     <template v-else>
@@ -64,7 +64,7 @@
             params: { categoryName: this.categoryName }
           }"
         >
-          <button class="normal2xButton">Continue Shopping</button>
+          <button class="normal-2x-button">Continue Shopping</button>
         </router-link>
       </section>
     </template>

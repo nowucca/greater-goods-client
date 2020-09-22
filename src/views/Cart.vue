@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <div id="cartDescription">
+  <div class="cart">
+    <div id="cart-description">
       <ul>
         <li>
           <template v-if="cart.numberOfItems > 1">
             Your shopping cart contains
             {{ cart.numberOfItems }} items.
           </template>
-          <template v-else-if="cart.numberOfItems == 1">
+          <template v-else-if="cart.numberOfItems === 1">
             Your shopping cart contains
             {{ cart.numberOfItems }} item.
           </template>
@@ -16,8 +16,8 @@
       </ul>
     </div>
 
-    <section id="cartContents" v-if="!cart.empty">
-      <table border="1" cellpadding="3">
+    <section id="cart-contents" v-if="!cart.empty">
+      <table>
         <tr>
           <th>Product Name</th>
           <th>Description</th>
@@ -31,7 +31,7 @@
           <td>{{ item.product.name }}</td>
           <td>{{ item.product.description }}</td>
           <td>
-            <p class="productPoints">{{ item.product.points }}</p>
+            <p class="product-points">{{ item.product.points }}</p>
           </td>
           <td>
             <Price :amount="item.price" />
@@ -53,7 +53,7 @@
         </tr>
       </table>
 
-      <ul id="cartTotals" v-if="!cart.empty">
+      <ul id="cart-totals" v-if="!cart.empty">
         <li>
           Cart subtotal:
           <Price :amount="cart.subtotal" />
@@ -67,8 +67,8 @@
       </ul>
     </section>
 
-    <section id="cartActions">
-      <button class="normal2xButton" v-if="!cart.empty" @click.stop.prevent="clearCart">
+    <section id="cart-actions">
+      <button class="normal-2x-button" v-if="!cart.empty" @click.stop.prevent="clearCart">
         Clear Cart
       </button>
 
@@ -80,10 +80,10 @@
           }
         }"
       >
-        <button class="normal2xButton">Continue Shopping</button>
+        <button class="normal-2x-button">Continue Shopping</button>
       </router-link>
       <router-link :to="{ name: 'checkout' }" v-if="!cart.empty">
-        <button class="emphasized2xButton">Proceed to Checkout</button>
+        <button class="emphasized-2x-button">Proceed to Checkout</button>
       </router-link>
     </section>
   </div>
@@ -107,61 +107,61 @@ export default {
 }
 </script>
 
-<style scoped>
-#cartDescription {
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+<style lang="scss" scoped>
+.cart {
+  #cart-description {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-#cartContents {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  #cart-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-#cartTotals {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  border: 1px solid aliceblue;
-}
-#cartActions {
-  margin: 50px;
-  display: flex;
-  justify-content: space-around;
-}
+    table {
+      padding: 3px;
+      border: 1px solid red;
+      margin: 50px 50px;
 
-#cartContents table {
-  padding: 3px;
-  border: 1px solid red;
-  margin: 50px 50px;
-}
+      td,
+      th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
 
-#cartContents td,
-#cartContents th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+      tr:hover {
+        background-color: #ddd;
+      }
+      th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #5d9756;
+        color: white;
+      }
+      input[type='number'] {
+        width: 50px;
+      }
+    }
 
-#cartContents tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
+    #cart-totals {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      border: 1px solid aliceblue;
+    }
+  }
 
-#cartContents tr:hover {
-  background-color: #ddd;
-}
-
-#cartContents th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #5d9756;
-  color: white;
-}
-
-#cartContents input[type='number'] {
-  width: 50px;
+  #cart-actions {
+    margin: 50px;
+    display: flex;
+    justify-content: space-around;
+  }
 }
 </style>

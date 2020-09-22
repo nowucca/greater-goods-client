@@ -6,7 +6,7 @@
         name: 'home'
       }"
     >
-      <button class="normal2xButton">Continue</button>
+      <button class="normal-2x-button">Continue</button>
     </router-link>
   </div>
 </template>

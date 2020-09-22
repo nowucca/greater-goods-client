@@ -4,7 +4,7 @@
       <p>Your cart is empty. Please add an item to your cart to checkout.</p>
 
       <router-link :to="{ name: 'category', params: { name: selectedCategoryName } }">
-        <button class="normal2xButton">Continue Shopping</button>
+        <button class="normal-2x-button">Continue Shopping</button>
       </router-link>
     </section>
     <section id="checkoutMain" v-if="!cart.empty">
@@ -132,11 +132,11 @@
             ></tree-view>-->
 
             <div id="checkoutButtonArea">
-              <button id="checkoutButton" class="emphasized2xButton" @click.prevent="submitOrder" type="submit">
+              <button id="checkoutButton" class="emphasized-2x-button" @click.prevent="submitOrder" type="submit">
                 Complete Purchase
               </button>
 
-              <button id="resetButton" class="normal2xButton" @click="resetOrder" type="reset">
+              <button id="resetButton" class="normal-2x-button" @click="resetOrder" type="reset">
                 Reset Form
               </button>
             </div>

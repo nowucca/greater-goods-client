@@ -44,7 +44,7 @@ a.button,
   }
 }
 
-.normal2xButton {
+.normal-2x-button {
   @extend button;
   font-size: 18px;
   color: var(--button2x-color);
@@ -57,8 +57,8 @@ a.button,
   }
 }
 
-.emphasized2xButton {
-  @extend .normal2xButton;
+.emphasized-2x-button {
+  @extend .normal-2x-button;
   color: white;
   background: var(--ci-1);
   &:hover {
