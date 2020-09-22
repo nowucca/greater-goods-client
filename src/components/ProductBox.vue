@@ -1,19 +1,19 @@
 <template>
   <div class="product-box">
-    <img class="productImage" :src="require('@/assets/images/products/' + productImageFileName(product))" />
+    <img class="product-image" :src="require('@/assets/images/products/' + productImageFileName(product))" />
 
-    <div class="productDetails">
-      <span class="productTitle">{{ product.name }}</span>
+    <div class="product-details">
+      <span class="product-title">{{ product.name }}</span>
       <button @click="addToCart(product)">
         Add to Cart
       </button>
     </div>
 
-    <div class="productCost">
-      <p class="productPrice">
+    <div class="product-cost">
+      <p class="product-price">
         <Price :amount="product.price" />
       </p>
-      <p class="ggPointsBadge">{{ product.points }}</p>
+      <p class="gg-points-badge">{{ product.points }}</p>
     </div>
   </div>
 </template>
@@ -45,32 +45,33 @@ export default {
 
 <style lang="scss" scoped>
 .product-box {
-  background: #ffffff;
-  border: 1px solid #979797;
+  background: var(--product-box-background);
+  border: 1px solid var(--ci-2);
   width: 300px;
   height: 300px;
   display: flex;
   flex-direction: column;
   margin-top: 1px;
 
-  .productImage {
+  .product-image {
     width: 200px;
     height: 200px;
+    padding-top: 5px;
     margin-left: 50px;
     margin-right: 50px;
   }
 
-  .productDetails {
+  .product-details {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     height: 100px;
     font-size: 16px;
-    color: #1805ff;
+    color: var(--product-box-details);
   }
 
-  .productCost {
+  .product-cost {
     display: block;
     position: absolute;
     margin-left: 240px;
@@ -78,21 +79,21 @@ export default {
     flex-direction: column;
     align-items: flex-end;
 
-    .productPrice {
+    .product-price {
       font-size: 13px;
-      color: #303216;
+      color: var(--ci-3);
     }
 
-    .ggPointsBadge {
+    .gg-points-badge {
       height: 30px;
       width: 30px;
-      background-color: #caf898;
+      background-color: var(--point-badge-background);
       border-radius: 50%;
-      border: 1px solid #979797;
+      border: 1px solid var(--ci-2);
 
       font-size: 24px;
       font-weight: bold;
-      color: #896e45;
+      color: var(--point-badge-foreground);
       text-align: center;
       margin-top: 20px;
     }

@@ -1,37 +1,37 @@
 <template>
   <header id="header">
-    <div id="leftHeader">
+    <div id="left-header">
       <div id="logo">
         <router-link :to="{ name: 'home' }">
           <img src="@/assets/images/site/logo.png" alt="Greater Goods Grocers" />
         </router-link>
       </div>
 
-      <div id="logoText">
+      <div id="logo-text">
         <a href="#">
           <span>Greater Goods Grocers</span>
         </a>
       </div>
     </div>
 
-    <div id="midHeader">
+    <div id="mid-header">
       <HeaderSearchBar />
     </div>
 
-    <div id="rightHeader">
+    <div id="right-header">
       <HeaderCart />
 
-      <div id="avatarArea">
+      <div id="avatar-area">
         <a href="#">
           <img src="@/assets/images/site/avatar.png" alt="Cart Icon" />
         </a>
       </div>
 
-      <div id="accountArea">
-        <div id="welcomeMessage">
+      <div id="account-area">
+        <div id="welcome-message">
           <span>Welcome, Guest</span>
         </div>
-        <div id="signinLinks">Sign In | Register</div>
+        <div id="signin-links">Sign In | Register</div>
       </div>
     </div>
   </header>
@@ -57,7 +57,7 @@ export default {
   align-items: center;
   justify-content: space-between;
 
-  #leftHeader {
+  #left-header {
     width: 25rem;
     height: 6.25rem;
     display: flex;
@@ -69,20 +69,21 @@ export default {
     margin-left: 2.5em;
     margin-right: 0.625em;
   }
-  #logoText span {
+
+  #logo-text span {
     color: var(--ci-3);
     font-size: 24px;
   }
-  #rightHeader {
+  #right-header {
     width: 25em;
     display: flex;
     align-items: center;
   }
-  #avatarArea {
+  #avatar-area {
     margin-right: 1.25em;
   }
 
-  #accountArea {
+  #account-area {
     font-size: 16px;
     color: var(--ci-3);
   }

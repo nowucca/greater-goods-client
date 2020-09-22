@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div id="hours">Store Hours: 7 days a week. 6am-10pm PST</div>
-    <nav id="footerNav">
+    <nav id="footer-nav">
       <ul class="navlist">
         <li>
           <a href="#">Contact Us</a>
@@ -18,7 +18,7 @@
       </ul>
     </nav>
 
-    <nav id="socialLinks">
+    <nav id="social-links">
       <ul class="navlist">
         <li>
           <a href="#">
@@ -62,8 +62,8 @@ export default {}
     font-size: 24px;
   }
 
-  #socialLinks,
-  #footerNav {
+  #social-links,
+  #footer-nav {
     margin-top: 1.2em;
 
     ul {
@@ -97,7 +97,7 @@ export default {}
     }
   }
 
-  #socialLinks {
+  #social-links {
     ul {
       list-style-type: none;
       width: 100%;

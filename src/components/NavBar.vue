@@ -51,7 +51,6 @@ export default {
 @import 'src/styles/variables';
 
 .header-navbar {
-  --navbar-background: #5d9756;
   ul {
     list-style-type: none;
     margin: 0;

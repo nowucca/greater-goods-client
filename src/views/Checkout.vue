@@ -330,8 +330,8 @@ export default {
           justify-content: space-around;
           font-size: 16px;
           color: red;
-          margin-top: 5px;
-          margin-bottom: 5px;
+          margin-top: 0.3em;
+          margin-bottom: 0.3em;
         }
 
         .form-element {
@@ -343,7 +343,7 @@ export default {
           label {
             display: inline-block;
             text-align: right;
-            margin-right: 10px;
+            margin-right: 0.625em;
           }
         }
 
@@ -351,12 +351,12 @@ export default {
           display: flex;
           flex-direction: column;
           align-self: center;
-          margin-top: 30px;
+          margin-top: 1.9em;
 
           #checkout-button {
             text-align: center;
             text-decoration: none;
-            border: 2px solid #818181;
+            border: 2px solid var(--checkout-button-border);
           }
         }
       }
@@ -365,9 +365,9 @@ export default {
         @include checkout-paragraph;
       }
       .form-text-holder {
-        margin: 30px;
+        margin: 1.9em;
         border: 1px solid black;
-        padding: 5px;
+        padding: 0.3em;
 
         .form-text {
           text-align: center;

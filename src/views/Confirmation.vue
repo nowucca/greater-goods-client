@@ -105,25 +105,25 @@ export default {
 
     h1 {
       font-weight: bold;
-      margin-top: 30px;
+      margin-top: 1.9em;
     }
   }
   #confirmation-order-details {
     display: flex;
-    margin-top: 30px;
+    margin-top: 1.9em;
     justify-content: center;
 
     #order-details-table {
       text-align: center;
       border: 2px solid black;
-      background-color: #f1f1e1;
+      background-color: var(--confirmation-order-details-background);
 
       th {
         font-weight: bold;
       }
       td,
       th {
-        padding: 5px;
+        padding: 0.375em;
       }
       td {
         border-top: 1px solid black;
@@ -134,29 +134,26 @@ export default {
   #customer-details {
     text-align: center;
     display: block;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    margin-left: 300px;
-    margin-right: 300px;
-    background-color: #e1e1e1;
+    margin: 1.25em 18.75em 1.9em;
+    background-color: var(--confirmation-customer-details-background);
     border: 2px solid black;
-    padding: 10px;
+    padding: 0.625em;
 
     h1 {
       font-weight: bold;
-      margin-top: 10px;
+      margin-top: 0.625em;
     }
 
     p:last-of-type {
-      margin-bottom: 10px;
+      margin-bottom: 0.625em;
     }
   }
   #confirmation-continue {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 1.9em;
+    margin-bottom: 1.9em;
     text-align: center;
   }
 }

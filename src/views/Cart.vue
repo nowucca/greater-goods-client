@@ -110,7 +110,7 @@ export default {
 <style lang="scss" scoped>
 .cart {
   #cart-description {
-    margin-top: 50px;
+    margin-top: 3.125em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -122,31 +122,31 @@ export default {
     align-items: center;
 
     table {
-      padding: 3px;
+      padding: 0.2em;
       border: 1px solid red;
-      margin: 50px 50px;
+      margin: 3.125em 3.125em;
 
       td,
       th {
-        border: 1px solid #ddd;
-        padding: 8px;
+        border: 1px solid var(--cart-table-border);
+        padding: 0.5em;
       }
       tr:nth-child(even) {
-        background-color: #f2f2f2;
+        background-color: var(--cart-table-cell-alternate-background);
       }
 
       tr:hover {
-        background-color: #ddd;
+        background-color: var(--cart-table-border);
       }
       th {
-        padding-top: 12px;
-        padding-bottom: 12px;
+        padding-top: 0.75em;
+        padding-bottom: 0.75em;
         text-align: left;
-        background-color: #5d9756;
+        background-color: var(--cart-table-header-cell-background);
         color: white;
       }
       input[type='number'] {
-        width: 50px;
+        width: 3.125em;
       }
     }
 
@@ -159,7 +159,7 @@ export default {
   }
 
   #cart-actions {
-    margin: 50px;
+    margin: 3.125em;
     display: flex;
     justify-content: space-around;
   }

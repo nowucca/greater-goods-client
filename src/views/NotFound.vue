@@ -18,11 +18,11 @@ export default {}
 <style scoped>
 div {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 1.9em;
 }
 
 div a button {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 1.9em;
+  margin-bottom: 1.9em;
 }
 </style>

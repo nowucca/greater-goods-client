@@ -1,7 +1,7 @@
 <template>
   <form id="header-search-bar" action="/category">
-    <input id="searchBar" type="text" />
-    <img id="searchIcon" src="@/assets/images/site/search-icon.png" alt="Search Icon" />
+    <input id="search-bar" type="text" />
+    <img id="search-icon" src="@/assets/images/site/search-icon.png" alt="Search Icon" />
   </form>
 </template>
 
@@ -14,7 +14,7 @@ export default {}
   display: flex;
   align-items: center;
 
-  input#searchBar {
+  input#search-bar {
     border: 3px solid #303216;
     height: 2.6em;
     color: var(--ci-3);
@@ -23,7 +23,7 @@ export default {}
     min-width: 20em;
   }
 
-  img#searchIcon {
+  img#search-icon {
     height: 3em;
     border: 3px solid var(--ci-3);
     border-left: none;
