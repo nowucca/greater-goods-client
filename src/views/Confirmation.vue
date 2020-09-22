@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <section v-if="!orderDetail" id="confirmationInvalid">
+  <div id="confirmation">
+    <section v-if="!orderDetail" id="confirmation-invalid">
       <router-link
         :to="{
           name: 'category',
@@ -11,7 +11,7 @@
       </router-link>
     </section>
     <template v-else>
-      <section id="confirmationSummary">
+      <section id="confirmation-summary">
         <h1>Confirmation</h1>
         <p>
           Your confirmation number is
@@ -19,8 +19,8 @@
         </p>
         <p>{{ new Date(orderDetail.order.dateCreated) }}</p>
       </section>
-      <section id="confirmationOrderDetails">
-        <table id="orderDetailsTable">
+      <section id="confirmation-order-details">
+        <table id="order-details-table">
           <tr>
             <th>Product</th>
             <th>Quantity</th>
@@ -51,13 +51,13 @@
           </tr>
         </table>
       </section>
-      <section id="customerDetails">
+      <section id="customer-details">
         <h1>Customer Information</h1>
         <p>{{ orderDetail.customer.customerName }} ({{ orderDetail.customer.email }})</p>
         <p>{{ orderDetail.customer.address }}</p>
         <p>{{ orderDetail.customer.phone }}</p>
       </section>
-      <section id="confirmationContinue">
+      <section id="confirmation-continue">
         <router-link
           :to="{
             name: 'category',
@@ -86,85 +86,78 @@ export default {
 }
 </script>
 
-<style scoped>
-#confirmationSummary h1 {
-  font-weight: bold;
-  margin-top: 30px;
-}
+<style lang="scss" scoped>
+#confirmation {
+  section p {
+    margin-top: 5px;
+  }
 
-section p {
-  margin-top: 5px;
-}
+  #confirmation-invalid {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-around;
+  }
+  #confirmation-summary {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 
-#confirmationSummary {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
+    h1 {
+      font-weight: bold;
+      margin-top: 30px;
+    }
+  }
+  #confirmation-order-details {
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
 
-#confirmationOrderDetails {
-  display: flex;
-  margin-top: 30px;
-  justify-content: center;
-}
+    #order-details-table {
+      text-align: center;
+      border: 2px solid black;
+      background-color: #f1f1e1;
 
-#orderDetailsTable {
-  text-align: center;
-}
+      th {
+        font-weight: bold;
+      }
+      td,
+      th {
+        padding: 5px;
+      }
+      td {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+  #customer-details {
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 300px;
+    margin-right: 300px;
+    background-color: #e1e1e1;
+    border: 2px solid black;
+    padding: 10px;
 
-#customerDetails {
-  text-align: center;
-  display: block;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  margin-left: 300px;
-  margin-right: 300px;
-  background-color: #e1e1e1;
-  border: 2px solid black;
-  padding: 10px;
-}
+    h1 {
+      font-weight: bold;
+      margin-top: 10px;
+    }
 
-#customerDetails p:last-of-type {
-  margin-bottom: 10px;
-}
-
-#customerDetails h1 {
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-#confirmationContinue {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-#orderDetailsTable {
-  border: 2px solid black;
-  background-color: #f1f1e1;
-}
-
-#orderDetailsTable th {
-  font-weight: bold;
-}
-
-#orderDetailsTable td,
-#orderDetailsTable th {
-  padding: 5px;
-}
-
-#orderDetailsTable td {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-}
-
-#confirmationInvalid {
-  margin-top: 100px;
-  margin-bottom: 100px;
-  display: flex;
-  justify-content: space-around;
+    p:last-of-type {
+      margin-bottom: 10px;
+    }
+  }
+  #confirmation-continue {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
 }
 </style>
