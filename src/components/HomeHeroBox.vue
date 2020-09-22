@@ -1,5 +1,5 @@
 <template>
-  <div class="heroBox">
+  <div class="hero-box">
     <font-awesome-icon :icon="faIcon" size="2x"></font-awesome-icon>
     <h3>{{ title }}</h3>
     <span :id="id">{{ byline }}</span>
@@ -28,40 +28,39 @@ export default {
 }
 </script>
 
-<style scoped>
-.heroBox {
+<style lang="scss" scoped>
+.hero-box {
+  @include flex(column);
+  @include align-items(center);
   width: 300px;
   height: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #ebf2e2;
+  background-color: var(--background-1);
 
-  border: 3px solid #9e9393;
+  border: 3px solid var(--border-1);
   padding: 20px;
-}
 
-.heroBox i {
-  width: 100px;
-  height: 40px;
-  font-size: 3rem;
-  text-align: center;
-  color: #303216;
-}
+  h3 {
+    margin-top: 2em;
+    font-size: 20px;
+    color: var(--ci-3);
+    font-weight: bold;
+  }
 
-.heroBox h3 {
-  margin-top: 30px;
-  font-size: 20px;
-  color: #303216;
-  font-weight: bold;
-}
+  i {
+    width: 8em;
+    height: 3em;
+    font-size: 3rem;
+    text-align: center;
+    color: var(--ci-3);
+  }
 
-.heroBox span {
-  margin-top: 30px;
-  font-size: 20px;
-  width: 75%;
-  text-align: center;
-  color: #303216;
-  font-weight: lighter;
+  span {
+    margin-top: 1.5em;
+    font-size: 20px;
+    width: 75%;
+    text-align: center;
+    color: var(--ci-3);
+    font-weight: lighter;
+  }
 }
 </style>

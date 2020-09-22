@@ -1,8 +1,8 @@
 <template>
-  <div id="cartButton">
+  <div id="header-cart">
     <router-link :to="{ name: 'cart' }">
-      <img src="@/assets/site/cart-icon.png" alt="Cart Icon" />
-      <div id="cartCount">{{ cart.numberOfItems }}</div>
+      <img src="@/assets/images/site/cart-icon.png" alt="Cart Icon" />
+      <div id="cart-count">{{ cart.numberOfItems }}</div>
     </router-link>
   </div>
 </template>
@@ -17,25 +17,23 @@ export default {
 }
 </script>
 
-<style scoped>
-#cartButton {
-  min-width: 200px;
-}
-#cartButton img {
-  width: 80px;
-}
-
-#cartButton {
+<style lang="scss">
+#header-cart {
+  min-width: 12.5em;
   position: relative;
-}
 
-#cartCount {
-  position: absolute;
-  top: 12px;
-  left: 38px;
-  font-weight: bold;
-  font-size: larger;
-  color: #fafafa;
-  cursor: pointer;
+  img {
+    width: 80px;
+  }
+
+  #cart-count {
+    position: absolute;
+    top: 12px;
+    left: 38px;
+    font-weight: bold;
+    font-size: larger;
+    color: #fafafa;
+    cursor: pointer;
+  }
 }
 </style>

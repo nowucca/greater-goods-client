@@ -1,17 +1,17 @@
 <template>
-  <div>
-    <section v-if="!orderDetail" id="confirmationInvalid">
+  <div id="confirmation">
+    <section v-if="!orderDetail" id="confirmation-invalid">
       <router-link
         :to="{
           name: 'category',
           params: { categoryName: this.categoryName }
         }"
       >
-        <button class="normal2xButton">Continue Shopping</button>
+        <button class="normal-2x-button">Continue Shopping</button>
       </router-link>
     </section>
     <template v-else>
-      <section id="confirmationSummary">
+      <section id="confirmation-summary">
         <h1>Confirmation</h1>
         <p>
           Your confirmation number is
@@ -19,23 +19,18 @@
         </p>
         <p>{{ new Date(orderDetail.order.dateCreated) }}</p>
       </section>
-      <section id="confirmationOrderDetails">
-        <table id="orderDetailsTable">
+      <section id="confirmation-order-details">
+        <table id="order-details-table">
           <tr>
             <th>Product</th>
             <th>Quantity</th>
             <th>Price</th>
           </tr>
-          <tr
-            v-for="(item, index) in orderDetail.lineItems"
-            :key="orderDetail.order.orderId + '-' + item.productId"
-          >
+          <tr v-for="(item, index) in orderDetail.lineItems" :key="orderDetail.order.orderId + '-' + item.productId">
             <td>{{ orderDetail.products[index].name }}</td>
             <td>{{ item.quantity }}</td>
             <td>
-              <Price
-                :amount="orderDetail.products[index].price * item.quantity"
-              />
+              <Price :amount="orderDetail.products[index].price * item.quantity" />
             </td>
           </tr>
           <tr>
@@ -56,24 +51,20 @@
           </tr>
         </table>
       </section>
-      <section id="customerDetails">
+      <section id="customer-details">
         <h1>Customer Information</h1>
-        <p>
-          {{ orderDetail.customer.customerName }} ({{
-            orderDetail.customer.email
-          }})
-        </p>
+        <p>{{ orderDetail.customer.customerName }} ({{ orderDetail.customer.email }})</p>
         <p>{{ orderDetail.customer.address }}</p>
         <p>{{ orderDetail.customer.phone }}</p>
       </section>
-      <section id="confirmationContinue">
+      <section id="confirmation-continue">
         <router-link
           :to="{
             name: 'category',
             params: { categoryName: this.categoryName }
           }"
         >
-          <button class="normal2xButton">Continue Shopping</button>
+          <button class="normal-2x-button">Continue Shopping</button>
         </router-link>
       </section>
     </template>
@@ -83,6 +74,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import Price from '@/components/Price.vue'
+
 export default {
   components: {
     Price
@@ -94,93 +86,75 @@ export default {
 }
 </script>
 
-<style scoped>
-#confirmationSummary h1 {
-  font-weight: bold;
-  margin-top: 30px;
-}
+<style lang="scss" scoped>
+#confirmation {
+  section p {
+    margin-top: 5px;
+  }
 
-section p {
-  margin-top: 5px;
-}
-#confirmationSummary {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
+  #confirmation-invalid {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-around;
+  }
+  #confirmation-summary {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 
-#confirmationOrderDetails {
-  display: flex;
-  margin-top: 30px;
-  justify-content: center;
-}
+    h1 {
+      font-weight: bold;
+      margin-top: 1.9em;
+    }
+  }
+  #confirmation-order-details {
+    display: flex;
+    margin-top: 1.9em;
+    justify-content: center;
 
-#orderDetailsTable {
-  text-align: center;
-}
-#customerDetails {
-  text-align: center;
-  display: block;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  margin-left: 300px;
-  margin-right: 300px;
-  background-color: #e1e1e1;
-  border: 2px solid black;
-  padding: 10px;
-}
+    #order-details-table {
+      text-align: center;
+      border: 2px solid black;
+      background-color: var(--confirmation-order-details-background);
 
-#customerDetails p:last-of-type {
-  margin-bottom: 10px;
-}
+      th {
+        font-weight: bold;
+      }
+      td,
+      th {
+        padding: 0.375em;
+      }
+      td {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+  #customer-details {
+    text-align: center;
+    display: block;
+    margin: 1.25em 18.75em 1.9em;
+    background-color: var(--confirmation-customer-details-background);
+    border: 2px solid black;
+    padding: 0.625em;
 
-#customerDetails h1 {
-  font-weight: bold;
-  margin-top: 10px;
-}
+    h1 {
+      font-weight: bold;
+      margin-top: 0.625em;
+    }
 
-#confirmationContinue {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.continueShoppingButton {
-  background-color: #00882b;
-  color: white;
-  margin-top: 20px;
-  padding: 8px 16px;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  border: 2px #818181 solid;
-  cursor: pointer;
-}
-
-#orderDetailsTable {
-  border: 2px solid black;
-  background-color: #f1f1e1;
-}
-#orderDetailsTable th {
-  font-weight: bold;
-}
-
-#orderDetailsTable td,
-#orderDetailsTable th {
-  padding: 5px;
-}
-
-#orderDetailsTable td {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-}
-#confirmationInvalid {
-  margin-top: 100px;
-  margin-bottom: 100px;
-  display: flex;
-  justify-content: space-around;
+    p:last-of-type {
+      margin-bottom: 0.625em;
+    }
+  }
+  #confirmation-continue {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1.9em;
+    margin-bottom: 1.9em;
+    text-align: center;
+  }
 }
 </style>

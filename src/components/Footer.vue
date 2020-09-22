@@ -1,7 +1,7 @@
 <template>
-  <footer>
+  <footer class="footer">
     <div id="hours">Store Hours: 7 days a week. 6am-10pm PST</div>
-    <nav id="footerNav">
+    <nav id="footer-nav">
       <ul class="navlist">
         <li>
           <a href="#">Contact Us</a>
@@ -18,13 +18,11 @@
       </ul>
     </nav>
 
-    <nav id="socialLinks">
+    <nav id="social-links">
       <ul class="navlist">
         <li>
           <a href="#">
-            <font-awesome-icon
-              :icon="['fab', 'facebook-f']"
-            ></font-awesome-icon>
+            <font-awesome-icon :icon="['fab', 'facebook-f']"></font-awesome-icon>
           </a>
         </li>
         <li>
@@ -50,77 +48,76 @@
 export default {}
 </script>
 
-<style scoped>
-footer {
-  background: #ebf2e2;
+<style lang="scss" scoped>
+.footer {
+  background: var(--background-1);
   color: #303216;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-left: 50px;
-}
+  padding-left: 3em;
 
-#hours {
-  margin-top: 20px;
-  font-size: 24px;
-}
+  #hours {
+    margin-top: 1.2em;
+    font-size: 24px;
+  }
 
-#socialLinks,
-#footerNav {
-  margin-top: 20px;
-}
+  #social-links,
+  #footer-nav {
+    margin-top: 1.2em;
 
-#footerNav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: flex;
-  top: 100;
-  width: 100%;
-}
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      width: 100%;
+    }
 
-#footerNav li {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  padding-right: 30px;
-  padding-left: 30px;
-  border-right: 1px solid #303216;
-}
+    li {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      padding-right: 1.5em;
+      padding-left: 1.5em;
+      border-right: 1px solid var(--ci-3);
 
-#footerNav li:first-child {
-  padding-left: 0;
-}
+      &:first-child {
+        padding-left: 0;
+      }
 
-#footerNav li:last-child {
-  border-right: none;
-}
+      &:last-child {
+        border-right: none;
+      }
 
-#footerNav li a {
-  color: #303216;
-}
+      a {
+        color: var(--ci-3);
+      }
+    }
+  }
 
-#socialLinks ul {
-  list-style-type: none;
-  top: 100;
-  width: 50%;
-  display: flex;
-  flex-direction: row;
-}
+  #social-links {
+    ul {
+      list-style-type: none;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
 
-#socialLinks ul li a {
-  display: block;
-  color: #303216;
-  text-align: center;
-  text-decoration: none;
-  padding-right: 30px;
-  font-size: 44px;
-}
+      li a {
+        display: block;
+        color: #303216;
+        text-align: center;
+        text-decoration: none;
+        font-size: 44px;
+      }
+    }
+  }
 
-#copyright {
-  font-size: 14px;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  #copyright {
+    font-size: 14px;
+    margin-top: 1.4em;
+    margin-bottom: 2em;
+  }
 }
 </style>

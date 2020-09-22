@@ -1,19 +1,15 @@
 <template>
-  <nav id="headerNav" v-if="visible">
+  <nav class="header-navbar" v-if="visible">
     <ul>
       <template v-for="cat in categories">
-        <li
-          :key="cat.categoryId"
-          v-if="selectedCategoryName === cat.name"
-          class="active"
-        >
+        <li :key="cat.categoryId" v-if="showActiveCategory(cat)" class="active">
           <router-link
             :to="{
               name: 'category',
               params: { categoryName: cat.name }
             }"
-            >{{ cat.name }}</router-link
-          >
+            >{{ cat.name }}
+          </router-link>
         </li>
         <li :key="cat.categoryId" v-else>
           <router-link
@@ -21,8 +17,8 @@
               name: 'category',
               params: { categoryName: cat.name }
             }"
-            >{{ cat.name }}</router-link
-          >
+            >{{ cat.name }}
+          </router-link>
         </li>
       </template>
     </ul>
@@ -43,41 +39,53 @@ export default {
     ...mapState(['categories', 'selectedCategoryName'])
   },
   methods: {
+    showActiveCategory: function(category) {
+      return this.$route.name !== 'home' && this.selectedCategoryName === category.name
+    },
     ...mapActions(['selectCategory'])
   }
 }
 </script>
 
-<style scoped>
-#headerNav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #5d9756;
-  display: flex;
+<style lang="scss" scoped>
+@import 'src/styles/variables';
 
-  top: 100px;
-  width: 100%;
-}
+.header-navbar {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--navbar-background);
+    display: flex;
 
-li:last-child {
-  border-right: none;
-}
-#headerNav li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 12px 16px;
-  text-decoration: none;
-}
+    top: 100px;
+    width: 100%;
+  }
 
-#headerNav li a:hover {
-  background-color: #487643;
-}
+  li {
+    border-bottom: 5px solid var(--navbar-background);
+    &:hover {
+      background-color: var(--ci-1-darker-2);
+      border-bottom: 5px solid var(--ci-4-darker-1);
+    }
+  }
 
-#headerNav .active {
-  background-color: #71b869;
-  border-bottom: 5px solid #4a90e2;
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px 16px;
+    text-decoration: none;
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+
+  .active {
+    background-color: var(--ci-1);
+    border-bottom: 5px solid var(--ci-4);
+  }
 }
 </style>

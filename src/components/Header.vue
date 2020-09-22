@@ -1,37 +1,37 @@
 <template>
-  <header>
-    <div id="leftHeader">
+  <header id="header">
+    <div id="left-header">
       <div id="logo">
         <router-link :to="{ name: 'home' }">
-          <img src="@/assets/site/logo.png" alt="Greater Goods Grocers" />
+          <img src="@/assets/images/site/logo.png" alt="Greater Goods Grocers" />
         </router-link>
       </div>
 
-      <div id="logoText">
+      <div id="logo-text">
         <a href="#">
           <span>Greater Goods Grocers</span>
         </a>
       </div>
     </div>
 
-    <div id="midHeader">
+    <div id="mid-header">
       <HeaderSearchBar />
     </div>
 
-    <div id="rightHeader">
+    <div id="right-header">
       <HeaderCart />
 
-      <div id="avatarArea">
+      <div id="avatar-area">
         <a href="#">
-          <img src="@/assets/site/avatar.png" alt="Cart Icon" />
+          <img src="@/assets/images/site/avatar.png" alt="Cart Icon" />
         </a>
       </div>
 
-      <div id="accountArea">
-        <div id="welcomeMessage">
+      <div id="account-area">
+        <div id="welcome-message">
           <span>Welcome, Guest</span>
         </div>
-        <div id="signinLinks">Sign In | Register</div>
+        <div id="signin-links">Sign In | Register</div>
       </div>
     </div>
   </header>
@@ -48,45 +48,44 @@ export default {
 }
 </script>
 
-<style scoped>
-header {
-  background: #ebf2e2;
+<style lang="scss">
+#header {
+  font-size: 16px;
+  background: var(--background-1);
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
 
-header #leftHeader {
-  width: 400px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-}
+  #left-header {
+    width: 25rem;
+    height: 6.25rem;
+    display: flex;
+    align-items: center;
+  }
 
-header #logo img {
-  width: 60px;
-  margin-left: 40px;
-  margin-right: 10px;
-}
+  #logo img {
+    width: 3.75em;
+    margin-left: 2.5em;
+    margin-right: 0.625em;
+  }
 
-header #logoText span {
-  color: #303216;
-  font-size: 24px;
-}
+  #logo-text span {
+    color: var(--ci-3);
+    font-size: 24px;
+  }
+  #right-header {
+    width: 25em;
+    display: flex;
+    align-items: center;
+  }
+  #avatar-area {
+    margin-right: 1.25em;
+  }
 
-header #rightHeader {
-  width: 400px;
-  display: flex;
-  align-items: center;
-}
-
-#avatarArea {
-  margin-right: 20px;
-}
-
-#accountArea {
-  font-size: 16px;
-  color: #303216;
+  #account-area {
+    font-size: 16px;
+    color: var(--ci-3);
+  }
 }
 </style>

@@ -1,10 +1,6 @@
 <template>
-  <section class="products-container">
-    <ProductBox
-      v-for="product in selectedCategoryProducts"
-      v-bind:key="product.productId"
-      :product="product"
-    />
+  <section class="category-product-list">
+    <ProductBox v-for="product in selectedCategoryProducts" v-bind:key="product.productId" :product="product" />
   </section>
 </template>
 
@@ -20,14 +16,15 @@ export default {
 }
 </script>
 
-<style scoped>
-.products-container {
+<style lang="scss">
+.category-product-list {
   display: flex;
   flex-wrap: wrap;
+  color: var(--ci-3);
   align-items: center;
   width: 90%;
-  justify-content: space-around;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  justify-content: space-evenly;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
 }
 </style>

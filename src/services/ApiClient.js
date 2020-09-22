@@ -3,13 +3,7 @@ const portFrom = {
   'https:': ':8443'
 }
 
-const url =
-  location.protocol +
-  '//' +
-  location.hostname +
-  portFrom[location.protocol] +
-  process.env.BASE_URL +
-  'api'
+const url = location.protocol + '//' + location.hostname + portFrom[location.protocol] + process.env.BASE_URL + 'api'
 
 const fetchDefaults = {
   mode: 'cors',
@@ -24,9 +18,9 @@ const fetchDefaults = {
 
 export default {
   loadCategories(options = {}) {
-    console.log('fetching ' + url + '/api/categories')
+    console.log('fetching ' + url + '/categories')
     let fetchSettings = Object.assign({}, fetchDefaults, options)
-    return fetch(`${url}/api/categories`, fetchSettings)
+    return fetch(`${url}/categories`, fetchSettings)
       .then(stream => {
         if (stream.ok) {
           return stream.json()
@@ -41,10 +35,7 @@ export default {
   loadProductsForCategory(categoryName = null, options = {}) {
     let fetchSettings = Object.assign({}, fetchDefaults, options)
 
-    return fetch(
-      `${url}/api/products/category?name=${categoryName}`,
-      fetchSettings
-    )
+    return fetch(`${url}/products/category?name=${categoryName}`, fetchSettings)
       .then(stream => {
         if (stream.ok) {
           return stream.json()
@@ -60,7 +51,7 @@ export default {
       method: 'POST', // or 'PUT'
       body: JSON.stringify(order) // data can be `string` or {object}!
     }
-    return fetch(`${url}/api/orders`, {
+    return fetch(`${url}/orders`, {
       ...fetchDefaults,
       ...options
     }).then(stream => {

@@ -1,25 +1,18 @@
 <template>
-  <div>
-    <section id="checkoutEmpty" v-if="cart.empty">
+  <div id="checkout">
+    <section id="checkout-empty" v-if="cart.empty">
       <p>Your cart is empty. Please add an item to your cart to checkout.</p>
 
-      <router-link
-        :to="{ name: 'category', params: { name: selectedCategoryName } }"
-      >
-        <button class="normal2xButton">Continue Shopping</button>
+      <router-link :to="{ name: 'category', params: { name: selectedCategoryName } }">
+        <button class="normal-2x-button">Continue Shopping</button>
       </router-link>
     </section>
-    <section id="checkoutMain" v-if="!cart.empty">
+    <section id="checkout-main" v-if="!cart.empty">
       <p style="font-weight:bold">Checkout</p>
 
-      <div id="checkoutFormAndInfo">
-        <div id="checkoutFormBox">
-          <form
-            id="checkoutForm"
-            v-on:submit.prevent="submitOrder"
-            v-on:reset="resetOrder"
-            method="post"
-          >
+      <div id="checkout-form-and-info">
+        <div id="checkout-form-box">
+          <form id="checkout-form" v-on:submit.prevent="submitOrder" v-on:reset="resetOrder" method="post">
             <div class="form-element">
               <label for="name">Name</label>
               <input
@@ -34,9 +27,7 @@
               />
             </div>
             <template v-if="$v.name.$error">
-              <span class="error" v-if="!$v.name.required"
-                >Name is required</span
-              >
+              <span class="error" v-if="!$v.name.required">Name is required</span>
               <span class="error" v-if="!$v.name.minLength">
                 Name must have at least
                 {{ $v.name.$params.minLength.min }} letters.
@@ -140,29 +131,19 @@
               :options="{ rootObjectKey: '$v', maxDepth: 1 }"
             ></tree-view>-->
 
-            <div id="checkoutButtonArea">
-              <button
-                id="checkoutButton"
-                class="emphasized2xButton"
-                @click.prevent="submitOrder"
-                type="submit"
-              >
+            <div id="checkout-button-area">
+              <button id="checkout-button" class="emphasized-2x-button" @click.prevent="submitOrder" type="submit">
                 Complete Purchase
               </button>
 
-              <button
-                id="resetButton"
-                class="normal2xButton"
-                @click="resetOrder"
-                type="reset"
-              >
+              <button id="reset-button" class="normal-2x-button" @click="resetOrder" type="reset">
                 Reset Form
               </button>
             </div>
           </form>
         </div>
-        <div id="checkoutInfo">
-          <span id="checkoutInfoText">
+        <div id="checkout-info">
+          <span id="checkout-info-text">
             Your credit card will be charged
             <strong>
               <Price :amount="cart.total" />
@@ -178,21 +159,21 @@
             shipping)
           </span>
         </div>
-        <div v-if="checkoutStatus != ''" class="formTextHolder">
-          <template v-if="checkoutStatus == 'ERROR'">
-            <div class="formText formErrorText" v-if="$v.$invalid">
+        <div v-if="checkoutStatus !== ''" class="form-text-holder">
+          <template v-if="checkoutStatus === 'ERROR'">
+            <div class="form-text form-error-text" v-if="$v.$invalid">
               Please fix the problems above and try again.
             </div>
           </template>
 
-          <template v-if="checkoutStatus == 'PENDING'">
-            <div class="formText formPendingText">Processing...</div>
+          <template v-if="checkoutStatus === 'PENDING'">
+            <div class="form-text form-pending-text">Processing...</div>
           </template>
-          <template v-if="checkoutStatus == 'OK'">
-            <div class="formText formOKText">Order placed...</div>
+          <template v-if="checkoutStatus === 'OK'">
+            <div class="form-text form-ok-text">Order placed...</div>
           </template>
-          <template v-if="checkoutStatus == 'SERVER_ERROR'">
-            <div class="formText formErrorText">
+          <template v-if="checkoutStatus === 'SERVER_ERROR'">
+            <div class="form-text form-error-text">
               An unexpected error occurred, please try again.
             </div>
           </template>
@@ -203,9 +184,9 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import Price from '@/components/Price.vue'
-import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
+import { email, maxLength, minLength, required } from 'vuelidate/lib/validators'
 
 import isCreditCard from 'validator/lib/isCreditCard'
 import isMobilePhone from 'validator/lib/isMobilePhone'
@@ -253,7 +234,7 @@ export default {
   },
   computed: {
     ...mapState(['cart']),
-	...mapGetters(['categoryName'])
+    ...mapGetters(['categoryName'])
   },
   methods: {
     resetOrder() {
@@ -292,113 +273,119 @@ export default {
 }
 </script>
 
-<style scoped>
-#checkoutInfo,
-#checkoutMain p,
-#checkoutEmpty p {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-#checkoutEmpty {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-#checkoutFormErrors {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-#checkoutEmpty input,
-#checkoutEmpty select,
-#checkoutEmpty button,
-#checkoutMain input,
-#checkoutMain select,
-#checkoutMain button {
+<style lang="scss" scoped>
+@mixin checkout-element {
   margin-top: 15px;
   margin-right: 5px;
   line-height: 32px;
 }
-#checkoutFormErrors {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  font-size: 16px;
-  color: red;
-}
 
-.fieldErrorsBox,
-.error {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-around;
-  font-size: 16px;
-  color: red;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-#checkoutFormAndInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-#checkoutFormBox {
-}
-
-.form-element label {
-  display: inline-block;
-  text-align: right;
-  margin-right: 10px;
-}
-
-.form-element {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  justify-content: space-between;
-}
-
-#checkoutForm {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-#checkoutButton {
-  text-align: center;
-  text-decoration: none;
-  border: 2px solid #818181;
-}
-
-#checkoutButtonArea {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
+@mixin checkout-paragraph {
   margin-top: 30px;
-}
-
-.formTextHolder {
-  margin: 30px;
-  border: 1px solid black;
-  padding: 5px;
-}
-
-.formText {
+  margin-bottom: 30px;
   text-align: center;
 }
-.formErrorText {
-  color: red;
-}
-.formPendingText {
-  color: orange;
-}
-.formOKText {
-  color: blue;
+
+#checkout {
+  #checkout-empty {
+    text-align: center;
+    margin-bottom: 30px;
+
+    input,
+    select,
+    button {
+      @include checkout-element;
+    }
+
+    p {
+      @include checkout-paragraph;
+    }
+  }
+
+  #checkout-main {
+    input,
+    select,
+    button {
+      @include checkout-element;
+    }
+    p {
+      @include checkout-paragraph;
+    }
+
+    #checkout-form-and-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      #checkout-form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .error {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: space-around;
+          font-size: 16px;
+          color: red;
+          margin-top: 0.3em;
+          margin-bottom: 0.3em;
+        }
+
+        .form-element {
+          display: flex;
+          flex-direction: row;
+          align-items: baseline;
+          justify-content: space-between;
+
+          label {
+            display: inline-block;
+            text-align: right;
+            margin-right: 0.625em;
+          }
+        }
+
+        #checkout-button-area {
+          display: flex;
+          flex-direction: column;
+          align-self: center;
+          margin-top: 1.9em;
+
+          #checkout-button {
+            text-align: center;
+            text-decoration: none;
+            border: 2px solid var(--checkout-button-border);
+          }
+        }
+      }
+
+      #checkout-info {
+        @include checkout-paragraph;
+      }
+      .form-text-holder {
+        margin: 1.9em;
+        border: 1px solid black;
+        padding: 0.3em;
+
+        .form-text {
+          text-align: center;
+        }
+
+        .form-error-text {
+          color: red;
+        }
+
+        .form-pending-text {
+          color: orange;
+        }
+
+        .form-ok-text {
+          color: blue;
+        }
+      }
+    }
+  }
 }
 </style>
