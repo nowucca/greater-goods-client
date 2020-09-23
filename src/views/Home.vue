@@ -38,7 +38,7 @@ export default {
     HomeHeroBox
   },
   beforeRouteUpdate(routeTo, routeFrom, next) {
-    this.var(--store).dispatch('deselectCategory')
+    this.$store.dispatch('deselectCategory')
     next()
   }
 }
