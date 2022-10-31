@@ -1,0 +1,67 @@
+/* Links */
+a {
+  input[type='submit'] {
+    color: var(--link-primary);
+  }
+  &:visited {
+    input[type='submit'] {
+      color: var(--link-primary);
+    };
+  }
+}
+
+
+a {
+  &:hover { color: var(--link-secondary) }
+  &:active { color: var(--link-secondary) }
+}
+
+input[type='submit']:hover,
+ul.buttons a:hover {
+  color: var(--link-secondary);
+}
+
+
+/*
+Buttons
+ */
+
+button,
+a.button,
+.button {
+  border: 1px solid var(--ci-2);
+  font-weight: bold;
+  font-size: 13px;
+  color: var(--ci-1);
+  text-align: center;
+  width: 11.8em;
+  height: 2em;
+
+  &:hover {
+    background-color: var(--ci-1);
+    color: white;
+    font-weight: normal;
+  }
+}
+
+.normal-2x-button {
+  @extend button;
+  font-size: 18px;
+  color: var(--button2x-color);
+  background: var(--button2x-background);
+  border-radius: var(--global-radius);
+  width: 18em;
+  height: 3em;
+  &:hover {
+    background: var(--button2x-background-darker-2);
+  }
+}
+
+.emphasized-2x-button {
+  @extend .normal-2x-button;
+  color: white;
+  background: var(--ci-1);
+  &:hover {
+    background: var(--ci-1-darker-1);
+  }
+}
