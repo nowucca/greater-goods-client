@@ -78,7 +78,7 @@ function showActiveCategory(category: CategoryItem): boolean {
         <li :key="cat.categoryId" v-else>
           <router-link
             :to="{
-              name: 'category',
+              name: 'category-view',
               params: { categoryName: cat.name },
             }"
             >{{ cat.name }}
