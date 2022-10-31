@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AppHeaderSearchBar from "@/components/AppHeaderSearchBar.vue";
-import AppHeaderCart from "@/components/AppHeaderCart.vue";</script>
+import AppHeaderCart from "@/components/AppHeaderCart.vue";
+</script>
 
 <style lang="scss">
 #header {
