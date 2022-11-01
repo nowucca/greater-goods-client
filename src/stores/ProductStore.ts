@@ -11,11 +11,13 @@ export const useProductStore = defineStore("ProductStore", {
     async fetchProducts(categoryName: string) {
       console.log("fetching products for ", categoryName);
       const categoryStore = useCategoryStore();
-      const selectedCategory =
-        categoryStore.categoryList?.find(
-          (category) => category.name === categoryName
-        ) || categoryStore.categoryList[0];
-      const url = `${apiUrl}products/category?name=${selectedCategory.name}`;
+      const selectedCategory = categoryStore.categoryList?.find(
+        (category) => category.name === categoryName
+      );
+      const catName = selectedCategory
+        ? selectedCategory.name
+        : categoryStore.categoryName;
+      const url = `${apiUrl}products/category?name=${catName}`;
       this.productList = await fetch(url).then((response) => response.json());
     },
   },

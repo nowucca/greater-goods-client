@@ -25,11 +25,13 @@ const routes: Array<RouteRecordRaw> = [
     path: "/checkout",
     name: "checkout-view",
     component: CheckoutView,
+    meta: { hideNavbar: true },
   },
   {
     path: "/confirmation",
     name: "confirmation-view",
     component: ConfirmationView,
+    meta: { hideNavbar: true },
   },
 ];
 
