@@ -20,6 +20,12 @@ export const useCartStore = defineStore("CartStore", {
     count(): number {
       return this.cart.numberOfItems;
     },
+    subtotal(): number {
+      return this.cart.subtotal;
+    },
+    total(): number {
+      return this.cart.total;
+    },
   },
 
   actions: {
@@ -31,7 +37,7 @@ export const useCartStore = defineStore("CartStore", {
       this.cart.addProduct(product);
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(this.cart));
     },
-    updateBookQuantity(product: ProductItem, quantity: number) {
+    updateCart(product: ProductItem, quantity: number) {
       this.cart.update(product, quantity);
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(this.cart));
     },

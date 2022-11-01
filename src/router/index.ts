@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
 import CategoryView from "@/views/CategoryView.vue";
-
+import CartView from "@/views/CartView.vue";
+import CheckoutView from "@/views/CheckoutView.vue";
+import ConfirmationView from "@/views/ConfirmationView.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -13,6 +15,21 @@ const routes: Array<RouteRecordRaw> = [
     name: "category-view",
     component: CategoryView,
     props: true,
+  },
+  {
+    path: "/cart",
+    name: "cart-view",
+    component: CartView,
+  },
+  {
+    path: "/checkout",
+    name: "checkout-view",
+    component: CheckoutView,
+  },
+  {
+    path: "/confirmation",
+    name: "confirmation-view",
+    component: ConfirmationView,
   },
 ];
 

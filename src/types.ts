@@ -50,7 +50,7 @@ export class ShoppingCart {
    * Returns the sum of the item's price multiplied by the quantity for all
    * items in shopping cart list. This is the total cost excluding the surcharge.
    */
-  get subtotal() {
+  get subtotal(): number {
     return this.itemArray.reduce((amount: number, item: ShoppingCartItem) => {
       return amount + item.product.price * item.quantity;
     }, 0);
@@ -59,14 +59,14 @@ export class ShoppingCart {
   /**
    * Returns the total cost of the order (subtotal + surcharge).
    */
-  get total() {
+  get total(): number {
     return this.subtotal + this.surcharge;
   }
 
   /**
    * Returns the surcharge to be applied for items in the cart.
    */
-  get surcharge() {
+  get surcharge(): number {
     return 500;
   }
 
