@@ -14,6 +14,35 @@ export interface CategoryItem {
   name: string;
 }
 
+export interface CustomerForm {
+  name: string;
+  address: string;
+  phone: string;
+  email: string;
+  ccNumber: string;
+}
+
+export interface Order {
+  orderId: number;
+  amount: number;
+  dateCreated: number;
+  confirmationNumber: number;
+  customerId: number;
+}
+
+export interface LineItem {
+  productId: number;
+  orderId: number;
+  quantity: number;
+}
+
+export interface OrderDetails {
+  order: Order;
+  customer: CustomerForm;
+  lineItems: LineItem[];
+  products: ProductItem[];
+}
+
 /*
 
 The representation of a cart is an array of ShoppingCartItem.
@@ -125,5 +154,12 @@ export class ShoppingCartItem {
   constructor(theProduct: ProductItem) {
     this.product = theProduct;
     this.quantity = 1;
+  }
+
+  toJSON() {
+    return {
+      product: this.product,
+      quantity: this.quantity,
+    };
   }
 }

@@ -25,10 +25,10 @@ const categoryStore = useCategoryStore();
 import router from "@/router";
 
 const form = reactive({
-  name: "",
-  address: "",
-  phone: "",
-  email: "",
+  name: "Steve",
+  address: "123 Main St",
+  phone: "4085551212",
+  email: "steve@email.com",
   ccNumber: "4444333322221111",
   checkoutStatus: "" /* OK, ERROR, PENDING, SERVER_ERROR */,
 });
@@ -87,27 +87,30 @@ function resetOrder() {
 async function submitOrder() {
   console.log("Submit order");
   const isFormCorrect = await $v.value.$validate();
-  // if (!isFormCorrect) {
-  //   form.checkoutStatus = "ERROR";
-  // } else {
-  //   this.checkoutStatus = "PENDING";
-  //   cartStore
-  //     .submitOrder({
-  //       name: this.name,
-  //       address: this.address,
-  //       phone: this.phone,
-  //       email: this.email,
-  //       ccNumber: this.ccNumber,
-  //     })
-  //     .then(() => {
-  //       this.checkoutStatus = "OK";
-  //       router.push({ name: "confirmation-view" });
-  //     })
-  //     .catch((reason) => {
-  //       this.checkoutStatus = "SERVER_ERROR";
-  //       console.log("Error placing order", reason);
-  //     });
-  // }
+  if (!isFormCorrect) {
+    form.checkoutStatus = "ERROR";
+  } else {
+    form.checkoutStatus = "PENDING";
+    cartStore
+      .placeOrder(
+        {
+          name: form.name,
+          address: form.address,
+          phone: form.phone,
+          email: form.email,
+          ccNumber: form.ccNumber,
+        },
+        cart
+      )
+      .then(() => {
+        form.checkoutStatus = "OK";
+        router.push({ name: "confirmation-view" });
+      })
+      .catch((reason) => {
+        form.checkoutStatus = "SERVER_ERROR";
+        console.log("Error placing order", reason);
+      });
+  }
 }
 </script>
 
@@ -370,7 +373,7 @@ async function submitOrder() {
         </div>
         <div v-if="form.checkoutStatus !== ''" class="form-text-holder">
           <template v-if="form.checkoutStatus === 'ERROR'">
-            <div class="form-text form-error-text" v-if="$v.$invalid()">
+            <div class="form-text form-error-text" v-if="$v.$invalid">
               Please fix the problems above and try again.
             </div>
           </template>

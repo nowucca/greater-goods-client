@@ -58,3 +58,14 @@ export function isCreditCard(str: string) {
 
   return !!(sum % 10 === 0 ? sanitized : false);
 }
+
+export const fetchDefaults: object = {
+  mode: "cors",
+  cache: "no-cache",
+  credentials: "same-origin",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  redirect: "follow",
+  referrer: "client",
+};
