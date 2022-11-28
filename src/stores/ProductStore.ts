@@ -14,9 +14,7 @@ export const useProductStore = defineStore("ProductStore", {
       const selectedCategory = categoryStore.categoryList?.find(
         (category) => category.name === categoryName
       );
-      const catName = selectedCategory
-        ? selectedCategory.name
-        : categoryStore.categoryName;
+      const catName = selectedCategory ? selectedCategory.name : categoryName;
       const url = `${apiUrl}products/category?name=${catName}`;
       this.productList = await fetch(url).then((response) => response.json());
     },

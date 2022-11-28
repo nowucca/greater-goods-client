@@ -4,11 +4,18 @@ import CategoryView from "@/views/CategoryView.vue";
 import CartView from "@/views/CartView.vue";
 import CheckoutView from "@/views/CheckoutView.vue";
 import ConfirmationView from "@/views/ConfirmationView.vue";
+import NotFound from "@/views/NotFound.vue";
+
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
+    path: "/home",
     name: "home-view",
     component: HomeView,
+    alias: ["/", "/index.html"],
+  },
+  {
+    path: "/category",
+    redirect: "/category/Fresh Produce",
   },
   {
     path: "/category/:categoryName",
@@ -32,6 +39,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "confirmation-view",
     component: ConfirmationView,
     meta: { hideNavbar: true },
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "not-found",
+    component: NotFound,
   },
 ];
 

@@ -6,13 +6,16 @@ import { useProductStore } from "@/stores/ProductStore";
 const productStore = useProductStore();
 import { useRoute } from "vue-router";
 import { watch } from "vue";
+import router from "@/router";
 const route = useRoute();
 
 watch(
   () => route.params.categoryName,
   async (newName) => {
     await categoryStore.setSelectedCategoryName(newName as string);
-    await productStore.fetchProducts(newName as string);
+    await productStore.fetchProducts(newName as string).catch(() => {
+      router.push("/not-found");
+    });
   },
   { immediate: true }
 );
