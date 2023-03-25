@@ -1,0 +1,49 @@
+
+/* Variables */
+
+:root {
+  --link-primary: blue;
+  --link-secondary: purple;
+  --ci-1: hsl(113,35.7%,56.7%);
+  --ci-1-darker-1: hsl(113,35.7%,43%);
+  --ci-1-darker-2: hsl(113,35.7%,33%);
+  --ci-2: hsl(0, 0%, 59%);
+  --ci-3: hsl(64, 39%, 14%);
+  --ci-4: hsl(212,72%,58%);
+  --ci-4-darker-1: hsl(212,72%, calc(58 * .8%));
+  --background-1: #ebf2f2;
+  --border-1: #9e9393;
+  --global-radius: 4px;
+  --button2x-background: hsl(0,0%,84.7%);
+  --button2x-background-darker-1: hsl(0,0%,70%);
+  --button2x-background-darker-2: hsl(0,0%,50%);
+  --button2x-color: var(--ci-3);
+
+  --product-box-background: hsl(0, 0%, 100%);
+  --product-box-details: hsl(245, 100%, 51%);
+  --point-badge-background: hsl(89, 87%, 78%);
+  --point-badge-foreground: hsl(36, 33%, 40%);
+  --navbar-background: #5d9756;
+
+  --cart-table-border:  hsl(0, 0%, 87%);
+  --cart-table-header-cell-background: #5d9756;
+  --cart-table-cell-alternate-background: hsl(0, 0%, 95%);
+
+  --checkout-button-border: hsl(0, 0%, 51%);
+
+  --confirmation-customer-details-background: #e1e1e1;
+  --confirmation-order-details-background: #f1f1e1;
+}
+
+@mixin flex($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin align-items($value) {
+  align-items: $value;
+}
+
+@mixin justify-content($value) {
+  justify-content: $value;
+}
