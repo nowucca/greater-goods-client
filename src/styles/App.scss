@@ -1,0 +1,138 @@
+@import 'src/styles/normalize-and-reset';
+
+
+/* Hide pages until data is read */
+[v-cloak] {
+  display: none !important;
+}
+
+body {
+  font: 1em normal Verdana, Tahoma, sans-serif;
+  color: black;
+  font-size: 20px;
+}
+
+main {
+  /* stack header-section-footer on all pages */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Variables */
+
+:root {
+  --link-primary: blue;
+  --link-secondary: purple;
+  --ci-1: hsl(113,35.7%,56.7%);
+  --ci-1-darker-1: hsl(113,35.7%,43%);
+  --ci-1-darker-2: hsl(113,35.7%,33%);
+  --ci-2: hsl(0, 0%, 59%);
+  --ci-3: hsl(64, 39%, 14%);
+  --ci-4: hsl(212,72%,58%);
+  --ci-4-darker-1: hsl(212,72%, calc(58 * .8%));
+  --background-1: #ebf2f2;
+  --border-1: #9e9393;
+  --global-radius: 4px;
+  --button2x-background: hsl(0,0%,84.7%);
+  --button2x-background-darker-1: hsl(0,0%,70%);
+  --button2x-background-darker-2: hsl(0,0%,50%);
+  --button2x-color: var(--ci-3);
+
+  --product-box-background: hsl(0, 0%, 100%);
+  --product-box-details: hsl(245, 100%, 51%);
+  --point-badge-background: hsl(89, 87%, 78%);
+  --point-badge-foreground: hsl(36, 33%, 40%);
+  --navbar-background: #5d9756;
+
+  --cart-table-border:  hsl(0, 0%, 87%);
+  --cart-table-header-cell-background: #5d9756;
+  --cart-table-cell-alternate-background: hsl(0, 0%, 95%);
+
+  --checkout-button-border: hsl(0, 0%, 51%);
+
+  --confirmation-customer-details-background: #e1e1e1;
+  --confirmation-order-details-background: #f1f1e1;
+}
+
+@mixin flex($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin align-items($value) {
+  align-items: $value;
+}
+
+@mixin justify-content($value) {
+  justify-content: $value;
+}
+
+
+/* Widgets */
+/* Links */
+a {
+  input[type='submit'] {
+	color: var(--link-primary);
+  }
+  &:visited {
+	input[type='submit'] {
+	  color: var(--link-primary);
+	};
+  }
+}
+
+
+a {
+  &:hover { color: var(--link-secondary) }
+  &:active { color: var(--link-secondary) }
+}
+
+input[type='submit']:hover,
+ul.buttons a:hover {
+  color: var(--link-secondary);
+}
+
+
+/*
+Buttons
+ */
+
+button,
+a.button,
+.button {
+  border: 1px solid var(--ci-2);
+  font-weight: bold;
+  font-size: 13px;
+  color: var(--ci-1);
+  text-align: center;
+  width: 11.8em;
+  height: 2em;
+
+  &:hover {
+	background-color: var(--ci-1);
+	color: white;
+	font-weight: normal;
+  }
+}
+
+.normal-2x-button {
+  @extend button;
+  font-size: 18px;
+  color: var(--button2x-color);
+  background: var(--button2x-background);
+  border-radius: var(--global-radius);
+  width: 18em;
+  height: 3em;
+  &:hover {
+	background: var(--button2x-background-darker-2);
+  }
+}
+
+.emphasized-2x-button {
+  @extend .normal-2x-button;
+  color: white;
+  background: var(--ci-1);
+  &:hover {
+	background: var(--ci-1-darker-1);
+  }
+}
