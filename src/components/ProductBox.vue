@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Price from "@/components/ProductPrice.vue";
-import { ProductItem } from "@/types";
+import type { ProductItem } from "@/types";
 import { defineProps } from "vue";
 import { useCartStore } from "@/stores/CartStore";
 const cartStore = useCartStore();

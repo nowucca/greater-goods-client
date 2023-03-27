@@ -1,14 +1,8 @@
-import { defineStore } from "pinia";
-import {
-  CustomerForm,
-  Order,
-  OrderDetails,
-  ProductItem,
-  ShoppingCart,
-} from "@/types";
-import { apiUrl } from "@/api";
-import { fetchDefaults } from "@/utils";
-import { useOrderDetailsStore } from "@/stores/OrderDetailsStore";
+import {defineStore} from "pinia";
+import { ShoppingCart } from "@/types";
+import type {CustomerForm, OrderDetails, ProductItem} from "@/types";
+import {apiUrl} from "@/api";
+import {useOrderDetailsStore} from "@/stores/OrderDetailsStore";
 
 const CART_STORAGE_KEY = "cart";
 

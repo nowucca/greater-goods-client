@@ -1,18 +1,13 @@
 <script setup lang="ts">
 import Price from "@/components/ProductPrice.vue";
-import { computed, reactive } from "vue";
+import {computed, reactive} from "vue";
 import useVuelidate from "@vuelidate/core";
-import { useCartStore } from "@/stores/CartStore";
-import { isCreditCard, isMobilePhone } from "@/utils";
-import { useCategoryStore } from "@/stores/CategoryStore";
+import {useCartStore} from "@/stores/CartStore";
+import {isCreditCard, isMobilePhone} from "@/utils";
+import {useCategoryStore} from "@/stores/CategoryStore";
+import router from "@/router";
 
-import {
-  helpers,
-  email,
-  maxLength,
-  minLength,
-  required,
-} from "@vuelidate/validators";
+import {email, helpers, maxLength, minLength, required,} from "@vuelidate/validators";
 
 import CheckoutFieldError from "@/components/CheckoutFieldError.vue";
 
@@ -22,7 +17,6 @@ const cart = computed(() => {
 });
 
 const categoryStore = useCategoryStore();
-import router from "@/router";
 
 const form = reactive({
   name: "Steve",
@@ -76,17 +70,17 @@ const rules = {
   },
 };
 
-const $v = useVuelidate(rules, form);
+const v$ = useVuelidate(rules, form);
 
 function resetOrder() {
   console.log("Reset order");
-  $v.value.$reset();
+  v$.value.$reset();
   form.checkoutStatus = "";
 }
 
 async function submitOrder() {
   console.log("Submit order");
-  const isFormCorrect = await $v.value.$validate();
+  const isFormCorrect = await v$.value.$validate();
   if (!isFormCorrect) {
     form.checkoutStatus = "ERROR";
   } else {
@@ -99,8 +93,7 @@ async function submitOrder() {
           phone: form.phone,
           email: form.email,
           ccNumber: form.ccNumber,
-        },
-        cart
+        }
       )
       .then(() => {
         form.checkoutStatus = "OK";
@@ -267,11 +260,11 @@ async function submitOrder() {
                 maxlength="45"
                 id="name"
                 name="name"
-                @blur="$v.name.$touch()"
-                v-model.lazy="$v.name.$model"
+                @blur="v$.name.$touch()"
+                v-model.lazy="v$.name.$model"
               />
             </div>
-            <CheckoutFieldError field-name="name" :validator="$v" />
+            <CheckoutFieldError :field-name="v$.name" />
 
             <div class="form-element">
               <label for="address">Address</label>
@@ -282,11 +275,11 @@ async function submitOrder() {
                 maxlength="45"
                 id="address"
                 name="address"
-                @blur="$v.address.$touch()"
-                v-model.lazy="$v.address.$model"
+                @blur="v$.address.$touch()"
+                v-model.lazy="v$.address.$model"
               />
             </div>
-            <CheckoutFieldError field-name="address" :validator="$v" />
+            <CheckoutFieldError :field-name="v$.address" />
 
             <div class="form-element">
               <label for="phone">Phone</label>
@@ -297,11 +290,11 @@ async function submitOrder() {
                 maxlength="45"
                 id="phone"
                 name="phone"
-                @blur="$v.phone.$touch()"
-                v-model.lazy="$v.phone.$model"
+                @blur="v$.phone.$touch()"
+                v-model.lazy="v$.phone.$model"
               />
             </div>
-            <CheckoutFieldError field-name="phone" :validator="$v" />
+            <CheckoutFieldError :field-name="v$.phone" />
 
             <div class="form-element">
               <label for="email">Email</label>
@@ -312,11 +305,11 @@ async function submitOrder() {
                 maxlength="45"
                 id="email"
                 name="email"
-                @blur="$v.email.$touch()"
-                v-model.lazy="$v.email.$model"
+                @blur="v$.email.$touch()"
+                v-model.lazy="v$.email.$model"
               />
             </div>
-            <CheckoutFieldError field-name="email" :validator="$v" />
+            <CheckoutFieldError :field-name="v$.email" />
 
             <div class="form-element">
               <label for="ccNumber">Credit card</label>
@@ -327,11 +320,11 @@ async function submitOrder() {
                 maxlength="45"
                 id="ccNumber"
                 name="ccNumber"
-                @blur="$v.ccNumber.$touch()"
-                v-model="$v.ccNumber.$model"
+                @blur="v$.ccNumber.$touch()"
+                v-model="v$.ccNumber.$model"
               />
             </div>
-            <CheckoutFieldError field-name="ccNumber" :validator="$v" />
+            <CheckoutFieldError :field-name="v$.ccNumber" />
 
             <div id="checkout-button-area">
               <button
@@ -373,7 +366,7 @@ async function submitOrder() {
         </div>
         <div v-if="form.checkoutStatus !== ''" class="form-text-holder">
           <template v-if="form.checkoutStatus === 'ERROR'">
-            <div class="form-text form-error-text" v-if="$v.$invalid">
+            <div class="form-text form-error-text" v-if="v$.$invalid">
               Please fix the problems above and try again.
             </div>
           </template>

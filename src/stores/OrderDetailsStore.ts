@@ -1,7 +1,5 @@
-import { defineStore } from "pinia";
-import { CategoryItem, OrderDetails, ProductItem, ShoppingCart } from "@/types";
-import { apiUrl } from "@/api";
-import { useCategoryStore } from "@/stores/CategoryStore";
+import {defineStore} from "pinia";
+import type {OrderDetails} from "@/types";
 
 const ORDER_DETAIL_STORAGE_KEY = "orderDetail";
 

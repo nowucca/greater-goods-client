@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import CategoryProductList from "@/components/CategoryProductList.vue";
 import { useCategoryStore } from "@/stores/CategoryStore";
-const categoryStore = useCategoryStore();
 import { useProductStore } from "@/stores/ProductStore";
-const productStore = useProductStore();
 import { useRoute } from "vue-router";
 import { watch } from "vue";
 import router from "@/router";
+const categoryStore = useCategoryStore();
+const productStore = useProductStore();
 const route = useRoute();
 
 watch(

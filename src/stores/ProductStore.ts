@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { CategoryItem, ProductItem } from "@/types";
+import type { ProductItem } from "@/types";
 import { apiUrl } from "@/api";
 import { useCategoryStore } from "@/stores/CategoryStore";
 

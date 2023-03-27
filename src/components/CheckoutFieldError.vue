@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { defineProps, Ref } from "vue";
-import { Validation } from "@vuelidate/core";
+import {defineProps} from "vue";
+import type {Ref} from "vue";
+import type {BaseValidation, Validation} from "@vuelidate/core";
 
 const props = defineProps<{
-  fieldName: string;
-  validator: Ref<Validation>;
+  fieldName: BaseValidation;
 }>();
 </script>
 
@@ -20,10 +20,10 @@ form > .error {
 </style>
 
 <template>
-  <template v-if="validator[fieldName].$error">
+  <template v-if="fieldName.$error">
     <span
       class="error"
-      v-for="error of validator[fieldName].$errors"
+      v-for="error of fieldName.$errors"
       :key="error.$uid"
       >{{ error.$message }}</span
     >

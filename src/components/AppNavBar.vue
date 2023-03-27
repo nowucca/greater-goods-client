@@ -2,7 +2,7 @@
 import { defineProps } from "vue";
 import { useCategoryStore } from "@/stores/CategoryStore";
 import { useRoute } from "vue-router";
-import { CategoryItem } from "@/types";
+import type { CategoryItem } from "@/types";
 
 const categoryStore = useCategoryStore();
 const route = useRoute();

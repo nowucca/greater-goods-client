@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import Price from "@/components/ProductPrice.vue";
 import { useCategoryStore } from "@/stores/CategoryStore";
-const categoryStore = useCategoryStore();
 import { useCartStore } from "@/stores/CartStore";
 import { computed } from "vue";
+const categoryStore = useCategoryStore();
 const cartStore = useCartStore();
 const cart = computed(() => {
   return cartStore.cart;

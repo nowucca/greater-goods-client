@@ -5,14 +5,13 @@ import { useOrderDetailsStore } from "@/stores/OrderDetailsStore";
 import { useCartStore } from "@/stores/CartStore";
 import { useCategoryStore } from "@/stores/CategoryStore";
 import { computed } from "vue";
+import type {OrderDetails} from "@/types";
 
 const orderDetailsStore = useOrderDetailsStore();
 const cartStore = useCartStore();
 const categoryStore = useCategoryStore();
 
-const orderDetails = computed(() => {
-  return orderDetailsStore.orderDetails;
-});
+const orderDetails = orderDetailsStore.orderDetails as OrderDetails;
 </script>
 
 <style lang="scss" scoped>

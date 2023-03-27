@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { CategoryItem } from "@/types";
+import type { CategoryItem } from "@/types";
 import { apiUrl } from "@/api";
 
 const DEFAULT_CATEGORY_NAME = "Fresh Produce";
