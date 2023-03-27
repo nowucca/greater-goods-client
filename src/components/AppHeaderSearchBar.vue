@@ -27,7 +27,7 @@
     <input id="search-bar" type="text" />
     <img
       id="search-icon"
-      src="@/assets/images/site/search-icon.png"
+      src="/assets/images/site/search-icon.png"
       alt="Search Icon"
     />
   </form>

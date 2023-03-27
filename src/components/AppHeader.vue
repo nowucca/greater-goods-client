@@ -51,7 +51,7 @@ import AppHeaderCart from "@/components/AppHeaderCart.vue";
       <div id="logo">
         <router-link :to="{ name: 'home-view' }">
           <img
-            src="@/assets/images/site/logo.png"
+            src="/assets/images/site/logo.png"
             alt="Greater Goods Grocers"
           />
         </router-link>
@@ -73,7 +73,7 @@ import AppHeaderCart from "@/components/AppHeaderCart.vue";
 
       <div id="avatar-area">
         <a href="#">
-          <img src="@/assets/images/site/avatar.png" alt="Cart Icon" />
+          <img src="/assets/images/site/avatar.png" alt="Cart Icon" />
         </a>
       </div>
 

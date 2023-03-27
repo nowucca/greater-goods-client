@@ -4,6 +4,7 @@ import type { ProductItem } from "@/types";
 import { defineProps } from "vue";
 import { useCartStore } from "@/stores/CartStore";
 const cartStore = useCartStore();
+const productImagePrefix = `${import.meta.env.BASE_URL}/assets/images/products`;
 const props = defineProps<{
   product: ProductItem;
 }>();
@@ -77,7 +78,7 @@ function productImageFileName(product: ProductItem): string {
   <div class="product-box">
     <img
       class="product-image"
-      :src="`/src/assets/images/products/${productImageFileName(product)}`"
+      :src="`${productImagePrefix}/${productImageFileName(product)}`"
     />
 
     <div class="product-details">

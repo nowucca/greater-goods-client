@@ -27,7 +27,7 @@ export default {
       rgba(255, 255, 255, 0.9),
       rgba(255, 255, 255, 0.8)
     ),*/
-  background-image: url("@/assets/images/site/neonbrand-394691-unsplash.jpg");
+  background-image: url("/assets/images/site/neonbrand-394691-unsplash.jpg");
   /* Position and center the image to scale nicely on all screens */
   background-position: right -20.1em;
   background-repeat: repeat;

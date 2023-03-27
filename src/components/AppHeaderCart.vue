@@ -28,7 +28,7 @@ const cartStore = useCartStore();
 <template>
   <div id="header-cart">
     <router-link :to="{ name: 'cart-view' }">
-      <img src="@/assets/images/site/cart-icon.png" alt="Cart Icon" />
+      <img src="/assets/images/site/cart-icon.png" alt="Cart Icon" />
       <div id="cart-count">{{ cartStore.count }}</div>
     </router-link>
   </div>
