@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {defineProps} from "vue";
-import type {Ref} from "vue";
-import type {BaseValidation, Validation} from "@vuelidate/core";
+import type {BaseValidation} from "@vuelidate/core";
 
 const props = defineProps<{
   fieldName: BaseValidation;

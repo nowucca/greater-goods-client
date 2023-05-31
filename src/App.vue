@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import AppHeader from "@/components/AppHeader.vue";
-import AppFooter from "@/components/AppFooter.vue";
-import AppNavBar from "@/components/AppNavBar.vue";
+import AppHeader from "@/components/TheHeader.vue";
+import AppFooter from "@/components/TheFooter.vue";
+import AppNavBar from "@/components/TheNavBar.vue";
 import { useRoute } from "vue-router";
 import { useCategoryStore } from "@/stores/CategoryStore";
 

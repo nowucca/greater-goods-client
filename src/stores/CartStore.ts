@@ -1,5 +1,5 @@
 import {defineStore} from "pinia";
-import { ShoppingCart } from "@/types";
+import { ShoppingCart } from "@/models/ShoppingCart";
 import type {CustomerForm, OrderDetails, ProductItem} from "@/types";
 import {apiUrl} from "@/api";
 import {useOrderDetailsStore} from "@/stores/OrderDetailsStore";

@@ -1,23 +1,14 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
-
-// From https://flaviocopes.com/how-to-format-number-as-currency-javascript/
-const PriceFormatter = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  minimumFractionDigits: 2,
-});
+import { PriceFormatter } from "@/utils";
 
 const props = defineProps<{
   amount: number;
 }>();
 
-function formatPrice(price: number): string {
-  return PriceFormatter.format(price / 100.0);
-}
 </script>
 
 <style></style>
 <template>
-  <span>{{ formatPrice(amount) }}</span>
+  <span>{{ PriceFormatter.format(amount / 100.0) }}</span>
 </template>

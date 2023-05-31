@@ -1,7 +1,7 @@
 // Correct number formatting for currency
 
 // From https://flaviocopes.com/how-to-format-number-as-currency-javascript/
-const PriceFormatter = new Intl.NumberFormat("en-US", {
+export const PriceFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
   minimumFractionDigits: 2,
